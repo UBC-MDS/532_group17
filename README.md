@@ -19,4 +19,4 @@ Interested in contributing? Check out the [contributing](CONTRIBUTING.md) guidel
 
 ## License
 
-`VanArt` is licensed under the terms of the MIT license.
+`VanArt` is licensed under the terms of the [MIT](LICENSE) license.
