@@ -11,7 +11,6 @@ This data science project is created for DSCI 532 (Data Visualization II); a cou
 
 ## Introduction
 
-Short summary and goal of project goes here. 
 
 **Application Description and Schematic**
 
