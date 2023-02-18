@@ -27,13 +27,15 @@ We'll be using a dataset that contains information on roughly 470 public artwork
 Additionally, we'll merge this dataset with another dataset that includes artist information, using the `ArtistID` variable to link them. This will allow us to provide the first name, last name, and artist URL of the author(s) of these public artworks.
 
 ## Research questions and usage scenarios
-Some research questions that our project tackles are described below:
+
+**Some research questions that our project tackles are described below:**
+
 1.	Where can I find publicly displayed art in Vancouver? Which neighbourhoods have the most publicly displayed art?  
 2.	Which artists have art displayed across Vancouver? 
 3.	What types of public art are there in different neighbourhoods in Vancouver? 
 4.	What type of art is most abundant in Vancouver? 
 
-An example usage scenario of our dashboard by a tourist is as follows:
+**An example usage scenario of our dashboard by a tourist is as follows:**
 
 Imagine you’re a tourist visiting different parts of the world in search of art that speaks to your soul. In your travels, you finally reach the beautiful city of Vancouver. Being the art fiend you are, you quickly exhaust all the art museums and galleries but your craving for art still isn’t satiated. Since you’re a proper tourist, you wander the streets in hopes of discovering public art that will quench this thirst for art. In this search, you come across a specific artwork that has you mesmerized. You wish to find other art created by the same artist as you continue your search for public art. However, this is a laborious effort and you wish there were a tool that could guide you to these public art pieces. This is where `VanArt` comes in. 
 
