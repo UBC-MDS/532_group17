@@ -5,26 +5,26 @@
 |--------------------|-----------------------------------------------------------------------|
 | Our Role           | Data science team hired by Vancouver Travel and Tourism               |
 | Target Audience    | Tourists visiting Vancouver.                                          |
-| Secondary Audience | Vancouverites who enjoy art, other artists hoping to be inspired      |
+| Secondary Audience | Vancouver locals who enjoy art, other artists hoping to be inspired   |
 
-Public art is an important aspect of any city as it reflects the culture, history, and values of a community. Vancouver is known for its vibrant and diverse arts scene, and as a result, it has a plethora of public art installations that locals and tourists can explore. However, apart from some well-known museums that gather art collections together, with so many public art installations scattered throughout the city, it can be difficult for tourists to find the art they are interested in. As a result, we want to provide tourists with a centralized location for people to find information on public art in Vancouver.
+Public art is an important aspect of any city as it reflects the culture, history, and values of a community. Vancouver is known for its vibrant and diverse arts scene, and as a result, it has a plethora of public art installations that locals and tourists can explore. However, apart from some well-known museums that gather art collections together, with so many public art installations scattered throughout the city, it can be difficult for tourists to find the art they are interested in. As a result, we want to provide tourists with a centralized location to find information on public art in Vancouver.
 
-Our `VanArt` dashboard provides a comprehensive and interactive dashboard that allows tourists to easily find the public art they are interested in. By providing information on the location, artists, year of installation, picture, etc. It will not only help tourists find the public art they are looking for but also provide context and background on each installation. Additionally, `VanArt` can serve as a tool to promote public art and encourage people to explore the city and appreciate the art scene in Vancouver. Overall, `VanArt` has the potential to enhance the experience of tourists visiting Vancouver by providing them with a unique and enriching way to explore the city's public art. Although geared towards tourists, `VanArt` can be used by anyone interested in the Vancouver public art scene; locals who would like to explore their city’s public art are welcome to and encouraged to use `VanArt`.
+Our `VanArt` dashboard provides a comprehensive and interactive dashboard that allows tourists to easily find the public art they are interested in. By providing information on the location, the artists, year of installation, etc. our dashboard will not only help tourists find the public art they are looking for but also provide context and background on each installation. Additionally, `VanArt` can serve as a tool to promote public art and encourage people to explore Vancouver. Overall, `VanArt` has the potential to enhance the experience of tourists visiting Vancouver by providing them with a unique and enriching way to explore the city's public art. Although geared towards tourists, `VanArt` can be used by anyone interested in the Vancouver public art scene; locals who would like to explore their city’s public art are welcome to and encouraged to use `VanArt`.
 
 ## Description of the data
-We'll be using a dataset that contains information on roughly 470 public artworks in Vancouver, with each site having 11 variables. These variables are described below:
+We'll be using a dataset that contains information on roughly 470 public artworks in Vancouver, with each artwork having 11 features/variables. These variables are described below:
 -	`Title of Work`: the title of the artwork 
--	`Type`: the type of art 
+-	`Type`: the type of art (mural, statue, etc.)
 -	`Status`: whether this art is in place or deaccessioned 
 -	`SiteAddress`: address of artwork
--	`Neighbourhood`: neighbourhood of artwork
+-	`Neighbourhood`: neighbourhood where the work is located
 -	`geo_point_2d`: latitude and longitude of the artwork
 -	`PhotoURL`: the photo URL
 -	`URL`: url with artwork information
 -	`DescriptionOfWork`: brief introduction to the artwork
 -	`YearOfInstallation`: the year artwork was installed
 
-Additionally, we'll merge this dataset with another dataset that includes artist information, using the "ArtistID" variable to link them. This will allow us to provide the first name, last name, and artist URL of the author(s) of these public artworks.
+Additionally, we'll merge this dataset with another dataset that includes artist information, using the `ArtistID` variable to link them. This will allow us to provide the first name, last name, and artist URL of the author(s) of these public artworks.
 
 ## Research questions and usage scenarios
 Some research questions that our project tackles are described below:
