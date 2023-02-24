@@ -1,4 +1,8 @@
 library(shiny)
+library(plotly)
+library(ggplot2)
+library(leaflet)
+
 
 ui <- fluidPage(
   
@@ -53,11 +57,33 @@ ui <- fluidPage(
         )
       ),
     # main panel for the map 
-    mainPanel()
+    mainPanel(
+      leafletOutput("mainMap")
+    )
   )
 )
 
 server <- function(input, output, session){
+  # aplies theme selected for the app to ggplot
+  thematic::thematic_shiny() 
+  
+  # read data
+  data <- readr::read_csv2("data/public-art.csv")
+  
+  # separate longitude and latitude and convert to numeric
+  data <- tidyr::separate(data,
+                          col = "geo_point_2d",
+                          into = c("latitude", "longitude"), sep = ", ") |> 
+    mutate(latitude = as.numeric(latitude),
+           longitude = as.numeric(longitude))
+  
+  # Create map
+  output$mainMap <- renderLeaflet({
+    leaflet(data) %>% 
+      addTiles() %>% 
+      addMarkers(lat = ~latitude,
+                 lng = ~longitude)
+  })
 }
 
 shinyApp(ui, server)
