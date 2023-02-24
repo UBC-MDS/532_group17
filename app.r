@@ -24,7 +24,8 @@ ui <- fluidPage(
                              label='Year Installed',
                              min=1950,
                              max=2022,
-                             value=72)
+                             value=c(0, 72),  # add two way slider
+                             sep = "")  # removes comma in slider
                )
         )
       ),
@@ -63,8 +64,8 @@ ui <- fluidPage(
     ),
     # main panel for the map 
     mainPanel(
-      leafletOutput("mainMap")
-    )
+        leafletOutput("mainMap", width = "600px", height = "500px")
+      )
   )
 )
 
@@ -80,8 +81,9 @@ server <- function(input, output, session){
                    col = "geo_point_2d",
                    into = c("latitude", "longitude"), sep = ", ") |> 
     mutate(latitude = as.numeric(latitude),
-           longitude = as.numeric(longitude))
-           #Neighborhood = coalesce("Neighborhood", "Geo Local Area"))
+           longitude = as.numeric(longitude),
+           Neighborhood = coalesce("Neighborhood", "Geo Local Area"))
+  # impute missing values in neighborhood using Geo Local Area
   
   # group data depending on neighborhood
   grouped_data <- 
@@ -95,7 +97,7 @@ server <- function(input, output, session){
   output$mainMap <- renderLeaflet({
     leaflet(grouped_data) %>% 
       addTiles() %>% 
-      addMarkers(lat = ~latitude,
+      addCircleMarkers(lat = ~latitude,  # can change CircleMarkers -> Markers
                  lng = ~longitude,
                  popup = ~paste("Neighbourhood: ", Neighbourhood, "<br>",
                                 "Number of art pieces: ", num_art, "<br>"))
