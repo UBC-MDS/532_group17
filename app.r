@@ -2,6 +2,7 @@ library(shiny)
 library(plotly)
 library(ggplot2)
 library(leaflet)
+library(tidyverse)
 
 
 ui <- fluidPage(
@@ -11,6 +12,9 @@ ui <- fluidPage(
   
   # sidebar for filtering
   sidebarLayout(
+    tags$div(  # manual control over dimensions
+      class = "sidebar",
+      style = "width: 1000px;",
     sidebarPanel(
       fluidRow(
         column(12,
@@ -55,7 +59,8 @@ ui <- fluidPage(
                                       "Kerrisdale" = "kerrisdale")))
                )
         )
-      ),
+      )
+    ),
     # main panel for the map 
     mainPanel(
       leafletOutput("mainMap")
@@ -68,21 +73,32 @@ server <- function(input, output, session){
   thematic::thematic_shiny() 
   
   # read data
-  data <- readr::read_csv2("data/public-art.csv")
+  data <- read_csv2("data/public-art.csv")
   
-  # separate longitude and latitude and convert to numeric
-  data <- tidyr::separate(data,
-                          col = "geo_point_2d",
-                          into = c("latitude", "longitude"), sep = ", ") |> 
+  # separate longitude and latitude and convert to numeric for plot
+  data <- separate(data,
+                   col = "geo_point_2d",
+                   into = c("latitude", "longitude"), sep = ", ") |> 
     mutate(latitude = as.numeric(latitude),
            longitude = as.numeric(longitude))
+           #Neighborhood = coalesce("Neighborhood", "Geo Local Area"))
+  
+  # group data depending on neighborhood
+  grouped_data <- 
+    data |> 
+    group_by(Neighbourhood) |> 
+    summarise(num_art = n(),
+              latitude = mean(latitude, na.rm = TRUE),
+              longitude = mean(longitude, na.rm = TRUE))
   
   # Create map
   output$mainMap <- renderLeaflet({
-    leaflet(data) %>% 
+    leaflet(grouped_data) %>% 
       addTiles() %>% 
       addMarkers(lat = ~latitude,
-                 lng = ~longitude)
+                 lng = ~longitude,
+                 popup = ~paste("Neighbourhood: ", Neighbourhood, "<br>",
+                                "Number of art pieces: ", num_art, "<br>"))
   })
 }
 
