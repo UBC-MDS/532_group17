@@ -43,10 +43,11 @@ ui <- fluidPage(
         column(12,
                wellPanel(
                  # checkboxes for choosing art type 
-                 checkboxGroupInput('type', 'Art Type',
-                                    c("Mural" = "mural",
-                                      "Statue" = "statue",
-                                      "Graffiti" = "graffiti"))
+                 checkboxGroupInput(
+                   'type', 'Art Type',
+                   choices = sort(unique(data$Type)),
+                   selected = NULL
+                 )
                )
         )
       ),
@@ -54,11 +55,13 @@ ui <- fluidPage(
         column(12,
                wellPanel(
                  # checkboxes for choosing neighbourhood 
-                 checkboxGroupInput('neighbourhood', 'Neighbourhood',
-                                    c("Downtown" = "downtown",
-                                      "Dunbar" = "dunbar",
-                                      "Kerrisdale" = "kerrisdale")))
+                 checkboxGroupInput(
+                   'neighbourhood', 'Neighbourhood',
+                   choices = unique(data$Neighbourhood),  # no sort due to NA
+                   selected = NULL
+                 )
                )
+          )
         )
       )
     ),
