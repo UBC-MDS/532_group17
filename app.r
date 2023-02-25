@@ -90,16 +90,19 @@ ui <- fluidPage(
     ),
     # main panel for the map 
     mainPanel(
-        leafletOutput("mainMap", width = "600px", height = "500px")
+      fluidRow(
+        column(8, leafletOutput("mainMap")),
+        column(4, plotOutput("barPlot"))  # width = "600px", height = "500px"
+        )
       )
+    )
   )
-)
 
 server <- function(input, output, session){
   # applies theme selected for the app to ggplot
   thematic::thematic_shiny() 
   
-  # Create map
+  # Create main geographical map
   output$mainMap <- renderLeaflet({
     leaflet(grouped_data) |> 
       addTiles() |>  
@@ -108,6 +111,31 @@ server <- function(input, output, session){
                  popup = ~paste("Neighbourhood: ", Neighbourhood, "<br>",
                                 "Number of art pieces: ", num_art, "<br>"))
   })
+  
+  output$barPlot <- renderPlot({
+    grouped_data |> 
+      ggplot(aes(x = num_art, y = Neighbourhood)) +
+      geom_bar(stat = "identity") + 
+      labs(
+        x = "Number of art pieces",
+        y = "Neighbourhood"
+      )
+  })
+  
+  # Create reactive data 
+  reactive_data <-
+    reactive({
+      data |>
+        filter(
+          YearOfInstallation >= input$bins[1] & YearOfInstallation <= input$bins[2]) |>
+        filter(Neighbourhood == input$neighbourhood) |>
+        filter(Type == input$type) |>
+        filter(Artists == input$artist)
+    })
+  
+  # Create reactive plot
+  
+
 }
 
 shinyApp(ui, server)
