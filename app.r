@@ -1,5 +1,4 @@
 library(shiny)
-library(plotly)
 library(ggplot2)
 library(leaflet)
 library(tidyverse)
@@ -33,9 +32,12 @@ ui <- fluidPage(
         column(12,
                wellPanel(
                  # dropdown menu for choosing artist 
-                 selectInput('artist', 
-                             "Artist", 
-                             choices = c('A', 'B', 'C'))
+                 selectInput(
+                   'artist', 'Artist',
+                   choices = c("Select artist(s)" = '',
+                               sort(unique(data$Artists))),  # 487 unique vals
+                   multiple = TRUE  # to undo selection: select -> delete
+                   )
                )
         )
       ),
@@ -43,10 +45,11 @@ ui <- fluidPage(
         column(12,
                wellPanel(
                  # checkboxes for choosing art type 
-                 checkboxGroupInput(
+                 selectInput(
                    'type', 'Art Type',
-                   choices = sort(unique(data$Type)),
-                   selected = NULL
+                   choices = c("Select type(s) of art" = '',
+                               sort(unique(data$Type))),
+                   multiple = TRUE
                  )
                )
         )
@@ -55,13 +58,14 @@ ui <- fluidPage(
         column(12,
                wellPanel(
                  # checkboxes for choosing neighbourhood 
-                 checkboxGroupInput(
+                 selectInput(
                    'neighbourhood', 'Neighbourhood',
-                   choices = unique(data$Neighbourhood),  # no sort due to NA
-                   selected = NULL
+                   choices = c("Select neighbourhood(s)" = '',
+                               unique(data$Neighbourhood)),  # no sort due to NA
+                   multiple = TRUE
+                   )
                  )
                )
-          )
         )
       )
     ),
@@ -88,7 +92,7 @@ server <- function(input, output, session){
            Neighborhood = coalesce("Neighborhood", "Geo Local Area"))
   # impute missing values in neighborhood using Geo Local Area
   
-  # group data depending on neighborhood
+  # group data depending on neighborhood for plot
   grouped_data <- 
     data |> 
     group_by(Neighbourhood) |> 
