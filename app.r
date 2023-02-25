@@ -3,11 +3,30 @@ library(ggplot2)
 library(leaflet)
 library(tidyverse)
 
+# read data
+data <- read_csv2("data/public-art.csv")
+
+# separate longitude and latitude and convert to numeric for plot
+data <- separate(data,
+                 col = "geo_point_2d",
+                 into = c("latitude", "longitude"), sep = ", ") |> 
+  mutate(latitude = as.numeric(latitude),
+         longitude = as.numeric(longitude),
+         Neighborhood = coalesce("Neighborhood", "Geo Local Area"))
+# impute missing values in neighborhood using Geo Local Area
+
+# group data depending on neighborhood for plot
+grouped_data <- 
+  data |> 
+  group_by(Neighbourhood) |> 
+  summarise(num_art = n(),
+            latitude = mean(latitude, na.rm = TRUE),
+            longitude = mean(longitude, na.rm = TRUE))
 
 ui <- fluidPage(
   
   # title 
-  titlePanel("VanArt ~ Discover Art in Your Backyard"),
+  titlePanel("VanArt ~ Discover public art in Vancouver!"),
   
   # sidebar for filtering
   sidebarLayout(
@@ -77,28 +96,8 @@ ui <- fluidPage(
 )
 
 server <- function(input, output, session){
-  # aplies theme selected for the app to ggplot
+  # applies theme selected for the app to ggplot
   thematic::thematic_shiny() 
-  
-  # read data
-  data <- read_csv2("data/public-art.csv")
-  
-  # separate longitude and latitude and convert to numeric for plot
-  data <- separate(data,
-                   col = "geo_point_2d",
-                   into = c("latitude", "longitude"), sep = ", ") |> 
-    mutate(latitude = as.numeric(latitude),
-           longitude = as.numeric(longitude),
-           Neighborhood = coalesce("Neighborhood", "Geo Local Area"))
-  # impute missing values in neighborhood using Geo Local Area
-  
-  # group data depending on neighborhood for plot
-  grouped_data <- 
-    data |> 
-    group_by(Neighbourhood) |> 
-    summarise(num_art = n(),
-              latitude = mean(latitude, na.rm = TRUE),
-              longitude = mean(longitude, na.rm = TRUE))
   
   # Create map
   output$mainMap <- renderLeaflet({
