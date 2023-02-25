@@ -119,7 +119,7 @@ server <- function(input, output, session){
   # Create barplot 
   output$barPlot <- renderPlot({
     grouped_data |> 
-      ggplot(aes(x = num_art, y = Neighbourhood)) +
+      ggplot(aes(x = num_art, y = reorder(Neighbourhood, -num_art))) +
       geom_bar(stat = "identity") + 
       labs(
         x = "Number of art pieces",
