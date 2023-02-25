@@ -91,8 +91,12 @@ ui <- fluidPage(
     # main panel for the map 
     mainPanel(
       fluidRow(
-        column(8, leafletOutput("mainMap")),
-        column(4, plotOutput("barPlot"))  # width = "600px", height = "500px"
+        column(8, leafletOutput("mainMap", width = "800px", height = "700px")),
+        column(4,
+               fluidRow(column(12, plotOutput("barPlot"))),
+               fluidRow(column(12, plotOutput("densityPlot"))),
+               fluidRow(column(12, plotOutput("piePlot")))
+               )
         )
       )
     )
@@ -112,6 +116,7 @@ server <- function(input, output, session){
                                 "Number of art pieces: ", num_art, "<br>"))
   })
   
+  # Create barplot 
   output$barPlot <- renderPlot({
     grouped_data |> 
       ggplot(aes(x = num_art, y = Neighbourhood)) +
@@ -120,6 +125,29 @@ server <- function(input, output, session){
         x = "Number of art pieces",
         y = "Neighbourhood"
       )
+  })
+  
+  # Create density plot
+  output$densityPlot <- renderPlot({
+    data |> 
+      ggplot(aes(YearOfInstallation)) +
+      geom_density(fill = "aquamarine", alpha = 0.8) +
+      labs(
+        x = "Number of art pieces",
+        y = "Density"
+      )
+  })
+  
+  # Create piechart
+  output$piePlot <- renderPlot({
+    data |> 
+      group_by(Type) |> 
+      summarise(num_art = n()) |> 
+      ggplot(aes(x = "", y = num_art, fill = Type)) + 
+      geom_bar(stat="identity", width=1) +
+      coord_polar("y", start=0) + 
+      labs(title = "Types of Art") + 
+      theme(legend.position = "bottom")
   })
   
   # Create reactive data 
