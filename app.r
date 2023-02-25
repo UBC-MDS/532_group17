@@ -102,8 +102,8 @@ server <- function(input, output, session){
   
   # Create map
   output$mainMap <- renderLeaflet({
-    leaflet(grouped_data) %>% 
-      addTiles() %>% 
+    leaflet(grouped_data) |> 
+      addTiles() |>  
       addCircleMarkers(lat = ~latitude,  # can change CircleMarkers -> Markers
                  lng = ~longitude,
                  popup = ~paste("Neighbourhood: ", Neighbourhood, "<br>",
