@@ -133,7 +133,7 @@ server <- function(input, output, session){
       ggplot(aes(YearOfInstallation)) +
       geom_density(fill = "aquamarine", alpha = 0.8) +
       labs(
-        x = "Number of art pieces",
+        x = "Year of installation",
         y = "Density"
       )
   })
