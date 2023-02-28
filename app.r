@@ -4,7 +4,8 @@ library(leaflet)
 library(tidyverse)
 
 # read data
-data <- read_csv2("data/public-art.csv")
+data <- read_csv2("data/public-art.csv") #|> 
+  #drop_na()
 
 # separate longitude and latitude and convert to numeric for plot
 data <- separate(data,
@@ -14,14 +15,6 @@ data <- separate(data,
          longitude = as.numeric(longitude),
          Neighborhood = coalesce("Neighborhood", "Geo Local Area"))
 # impute missing values in neighborhood using Geo Local Area
-
-# group data depending on neighborhood for plot
-grouped_data <- 
-  data |> 
-  group_by(Neighbourhood) |> 
-  summarise(num_art = n(),
-            latitude = mean(latitude, na.rm = TRUE),
-            longitude = mean(longitude, na.rm = TRUE))
 
 ui <- fluidPage(
   
@@ -42,7 +35,7 @@ ui <- fluidPage(
                              label='Year Installed',
                              min=1950,
                              max=2022,
-                             value=c(0, 72),  # add two way slider
+                             value=c(1950, 2022),  # add two way slider
                              sep = "")  # removes comma in slider
                )
         )
@@ -91,11 +84,9 @@ ui <- fluidPage(
     # main panel for the map 
     mainPanel(
       fluidRow(
-        column(8, leafletOutput("mainMap", width = "800px", height = "700px")),
+        column(8, leafletOutput("mainMap", width = "800px", height = "500px")),
         column(4,
-               fluidRow(column(12, plotOutput("barPlot"))),
-               fluidRow(column(12, plotOutput("densityPlot"))),
-               fluidRow(column(12, plotOutput("piePlot")))
+               fluidRow(column(12, plotOutput("barPlot")))
                )
         )
       )
@@ -106,64 +97,62 @@ server <- function(input, output, session){
   # applies theme selected for the app to ggplot
   thematic::thematic_shiny() 
   
-  # Create main geographical map
-  output$mainMap <- renderLeaflet({
-    leaflet(grouped_data) |> 
-      addTiles() |>  
-      addCircleMarkers(lat = ~latitude,  # can change CircleMarkers -> Markers
-                 lng = ~longitude,
-                 popup = ~paste("Neighbourhood: ", Neighbourhood, "<br>",
-                                "Number of art pieces: ", num_art, "<br>"))
-  })
-  
-  # Create barplot 
-  output$barPlot <- renderPlot({
-    grouped_data |> 
-      ggplot(aes(x = num_art, y = reorder(Neighbourhood, -num_art))) +
-      geom_bar(stat = "identity") + 
-      labs(
-        x = "Number of art pieces",
-        y = "Neighbourhood"
-      )
-  })
-  
-  # Create density plot
-  output$densityPlot <- renderPlot({
-    data |> 
-      ggplot(aes(YearOfInstallation)) +
-      geom_density(fill = "aquamarine", alpha = 0.8) +
-      labs(
-        x = "Year of installation",
-        y = "Density"
-      )
-  })
-  
-  # Create piechart
-  output$piePlot <- renderPlot({
-    data |> 
-      group_by(Type) |> 
-      summarise(num_art = n()) |> 
-      ggplot(aes(x = "", y = num_art, fill = Type)) + 
-      geom_bar(stat="identity", width=1) +
-      coord_polar("y", start=0) + 
-      labs(title = "Types of Art") + 
-      theme(legend.position = "bottom")
-  })
-  
   # Create reactive data 
-  reactive_data <-
+  reactive_data <- 
     reactive({
-      data |>
+      data |> 
         filter(
-          YearOfInstallation >= input$bins[1] & YearOfInstallation <= input$bins[2]) |>
-        filter(Neighbourhood == input$neighbourhood) |>
-        filter(Type == input$type) |>
-        filter(Artists == input$artist)
+          YearOfInstallation >= input$bins[1] &
+            YearOfInstallation <= input$bins[2]) |>
+        filter(Neighbourhood %in% input$neighbourhood) |> 
+        filter(Type %in% input$type)
+        
+        
+        # if (is.null(input$neighbourhood) &
+        #     is.null(input$artist) &
+        #     is.null(input$type) &
+        #     is.null(input$bins)){
+        #   data <- data
+        # }else{
+        #   data <-
+        #     data |> 
+        #     filter(Neighbourhood %in% input$neighbourhood)
+        # }
+      
+      # if (TRUE){
+      #   data <- data
+      # }else{
+      #   data <-
+      #     data |>
+      #     filter(Neighbourhood %in% input$neighbourhood)
+      # }
     })
   
-  # Create reactive plot
+  # initial_lat <- 49.247643
+  # initial_lng <- -123.138699
+  # initial_zoom <- 12
   
-
+  # Create main geographical map
+  output$mainMap <- renderLeaflet({
+    leaflet(reactive_data()) |>
+      #setView(lat = initial_lat, lng = initial_lng, zoom = initial_zoom) |> 
+      addTiles() |>  
+      addCircleMarkers(
+        lat = ~latitude,
+        lng = ~longitude,
+        radius = 2,
+        clusterOptions = markerClusterOptions(),
+        popup = ~paste(
+          "Title of work: ", `Title of Work`, "<br>",
+          "Type of art: ", Type, "<br>",
+          "Description: ", DescriptionOfwork, "<br> <br>",
+          "Neighbourhood: ", Neighbourhood, "<br>",
+          "Year installed: ", YearOfInstallation, "<br>",
+          "Photo URL: ", PhotoURL, "<br> <br>"
+          )
+        )
+  })
+  
 }
 
 shinyApp(ui, server)
