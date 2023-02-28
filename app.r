@@ -153,9 +153,12 @@ server <- function(input, output, session){
           "<b>Description</b>: ", DescriptionOfwork, "<br> <br>",
           "<b>Neighbourhood</b>: ", Neighbourhood, "<br>",
           "<b>Year installed</b>: ", YearOfInstallation, "<br>",
-          "<b>Photo URL</b>: ", "<a href='",
+          # "<b>Photo URL</b>: ", "<a href='",
+          # PhotoURL,
+          # "' target='_blank'>Click here to view image.</a>", "<br> <br>"
+          "<b>Photo:</b><br><img src='",
           PhotoURL,
-          "' target='_blank'>Click here to view image.</a>", "<br> <br>"
+          "' style='max-width:200px; max-height:200px;'><br>"
           ),
         popupOptions = popupOptions(
           closeButton = TRUE,
