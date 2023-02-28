@@ -4,8 +4,7 @@ library(leaflet)
 library(tidyverse)
 
 # read data
-data <- read_csv2("data/public-art.csv") #|> 
-  #drop_na()
+data <- read_csv2("data/public-art.csv")
 
 # separate longitude and latitude and convert to numeric for plot
 data <- separate(data,
@@ -47,9 +46,9 @@ ui <- fluidPage(
                  selectInput(
                    'artist', 'Artist',
                    choices = c("Select artist(s)" = '',
-                               unique(data$Artists)),  # 487 unique vals
+                               unique(data$Artists)),
                    selected = "All",
-                   multiple = TRUE  # to undo selection: select -> delete
+                   multiple = TRUE
                    )
                )
         )
@@ -75,7 +74,7 @@ ui <- fluidPage(
                  selectInput(
                    'neighbourhood', 'Neighbourhood',
                    choices = c("Select neighbourhood(s)" = '',
-                               unique(data$Neighbourhood)),  # no sort due to NA
+                               unique(data$Neighbourhood)),  
                    selected = "All",
                    multiple = TRUE
                    )
@@ -87,10 +86,7 @@ ui <- fluidPage(
     # main panel for the map 
     mainPanel(
       fluidRow(
-        column(8, leafletOutput("mainMap", width = "800px", height = "500px")),
-        column(4,
-               fluidRow(column(12, plotOutput("barPlot")))
-               )
+        column(8, leafletOutput("mainMap", width = "800px", height = "500px"))
         )
       )
     ),
@@ -138,8 +134,7 @@ server <- function(input, output, session){
           filter(Neighbourhood %in% input$neighbourhood)
       }
       
-      filtered_data
-
+      filtered_data  # original (if no inputs) or filtered data is returned
     })
   
   # Create main geographical map
@@ -150,6 +145,7 @@ server <- function(input, output, session){
         lat = ~latitude,
         lng = ~longitude,
         radius = 2,
+        color = "darkblue",
         clusterOptions = markerClusterOptions(),
         popup = ~paste(
           "<b>Title of work</b>: ", `Title of Work`, "<br>",
