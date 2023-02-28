@@ -139,7 +139,9 @@ server <- function(input, output, session){
   
   # Create main geographical map
   output$mainMap <- renderLeaflet({
-    leaflet(reactive_data()) |>
+    leaflet(reactive_data(),
+            options = leafletOptions(
+              attributionControl=FALSE)) |>
       addTiles() |>  
       addCircleMarkers(
         lat = ~latitude,
