@@ -39,20 +39,20 @@ ui <- fluidPage(
                )
         )
       ),
-      fluidRow(
-        column(12,
-               wellPanel(
-                 # dropdown menu for choosing artist 
-                 selectInput(
-                   'artist', 'Artist',
-                   choices = c("Select artist(s)" = '',
-                               unique(data$Artists)),
-                   selected = "All",
-                   multiple = TRUE
-                   )
-               )
-        )
-      ),
+      # fluidRow(
+      #   column(12,
+      #          wellPanel(
+      #            # dropdown menu for choosing artist 
+      #            selectInput(
+      #              'artist', 'Artist',
+      #              choices = c("Select artist(s)" = '',
+      #                          unique(data$Artists)),
+      #              selected = "All",
+      #              multiple = TRUE
+      #              )
+      #          )
+      #   )
+      # ),
       fluidRow(
         column(12,
                wellPanel(
@@ -86,7 +86,7 @@ ui <- fluidPage(
     # main panel for the map 
     mainPanel(
       fluidRow(
-        column(8, leafletOutput("mainMap", width = "800px", height = "500px"))
+        column(8, leafletOutput("mainMap", width = "800px", height = "478px"))
         )
       )
     ),
@@ -113,12 +113,12 @@ server <- function(input, output, session){
               YearOfInstallation <= input$bins[2])
       }
       
-      # filter based on artist
-      if (!is.null(input$artist)) {
-        filtered_data <- 
-          filtered_data |> 
-          filter(Artist %in% input$artist)
-      }
+      # # filter based on artist
+      # if (!is.null(input$artist)) {
+      #   filtered_data <- 
+      #     filtered_data |> 
+      #     filter(Artist %in% input$artist)
+      # }
       
       # filter based on art type
       if (!is.null(input$type)) {
@@ -146,14 +146,14 @@ server <- function(input, output, session){
       addCircleMarkers(
         lat = ~latitude,
         lng = ~longitude,
-        radius = 2,
+        radius = 5,
         color = "darkblue",
         clusterOptions = markerClusterOptions(),
         popup = ~paste(
           "<b>Title of work</b>: ", `Title of Work`, "<br>",
           "<b>Type of art</b>: ", Type, "<br>",
           "<b>Description</b>: ", DescriptionOfwork, "<br> <br>",
-          "<b>Neighbourhood</b>: ", Neighbourhood, "<br>",
+          "<b>Address</b>: ", SiteAddress, "<br>",
           "<b>Year installed</b>: ", YearOfInstallation, "<br>",
           # "<b>Photo URL</b>: ", "<a href='",
           # PhotoURL,
