@@ -47,7 +47,8 @@ ui <- fluidPage(
                  selectInput(
                    'artist', 'Artist',
                    choices = c("Select artist(s)" = '',
-                               sort(unique(data$Artists))),  # 487 unique vals
+                               unique(data$Artists)),  # 487 unique vals
+                   selected = "All",
                    multiple = TRUE  # to undo selection: select -> delete
                    )
                )
@@ -60,7 +61,8 @@ ui <- fluidPage(
                  selectInput(
                    'type', 'Art Type',
                    choices = c("Select type(s) of art" = '',
-                               sort(unique(data$Type))),
+                               unique(data$Type)),
+                   selected = "All",
                    multiple = TRUE
                  )
                )
@@ -74,6 +76,7 @@ ui <- fluidPage(
                    'neighbourhood', 'Neighbourhood',
                    choices = c("Select neighbourhood(s)" = '',
                                unique(data$Neighbourhood)),  # no sort due to NA
+                   selected = "All",
                    multiple = TRUE
                    )
                  )
@@ -100,42 +103,46 @@ server <- function(input, output, session){
   # Create reactive data 
   reactive_data <- 
     reactive({
-      data |> 
-        filter(
-          YearOfInstallation >= input$bins[1] &
-            YearOfInstallation <= input$bins[2]) |>
-        filter(Neighbourhood %in% input$neighbourhood) |> 
-        filter(Type %in% input$type)
-        
-        
-        # if (is.null(input$neighbourhood) &
-        #     is.null(input$artist) &
-        #     is.null(input$type) &
-        #     is.null(input$bins)){
-        #   data <- data
-        # }else{
-        #   data <-
-        #     data |> 
-        #     filter(Neighbourhood %in% input$neighbourhood)
-        # }
+      # set default view as all data
+      filtered_data <- data
       
-      # if (TRUE){
-      #   data <- data
-      # }else{
-      #   data <-
-      #     data |>
-      #     filter(Neighbourhood %in% input$neighbourhood)
-      # }
+      # filter based on input years
+      if (!is.null(input$bins)) {
+        filtered_data <- 
+          filtered_data |> 
+          filter(
+            YearOfInstallation >= input$bins[1] &
+              YearOfInstallation <= input$bins[2])
+      }
+      
+      # filter based on artist
+      if (!is.null(input$artist)) {
+        filtered_data <- 
+          filtered_data |> 
+          filter(Artist %in% input$artist)
+      }
+      
+      # filter based on art type
+      if (!is.null(input$type)) {
+        filtered_data <- 
+          filtered_data |> 
+          filter(Type %in% input$type)
+      }
+      
+      # filter based on neighbourhood
+      if (!is.null(input$neighbourhood)) {
+        filtered_data <- 
+          filtered_data |> 
+          filter(Neighbourhood %in% input$neighbourhood)
+      }
+      
+      filtered_data
+
     })
-  
-  # initial_lat <- 49.247643
-  # initial_lng <- -123.138699
-  # initial_zoom <- 12
   
   # Create main geographical map
   output$mainMap <- renderLeaflet({
     leaflet(reactive_data()) |>
-      #setView(lat = initial_lat, lng = initial_lng, zoom = initial_zoom) |> 
       addTiles() |>  
       addCircleMarkers(
         lat = ~latitude,
