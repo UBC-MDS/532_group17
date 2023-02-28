@@ -93,7 +93,9 @@ ui <- fluidPage(
                )
         )
       )
-    )
+    ),
+  # adding scrollable popup scroll in leaflet render
+  tags$style(".popup-scroll {max-height: 300px; overflow-y: auto;}")
   )
 
 server <- function(input, output, session){
@@ -150,13 +152,19 @@ server <- function(input, output, session){
         radius = 2,
         clusterOptions = markerClusterOptions(),
         popup = ~paste(
-          "Title of work: ", `Title of Work`, "<br>",
-          "Type of art: ", Type, "<br>",
-          "Description: ", DescriptionOfwork, "<br> <br>",
-          "Neighbourhood: ", Neighbourhood, "<br>",
-          "Year installed: ", YearOfInstallation, "<br>",
-          "Photo URL: ", PhotoURL, "<br> <br>"
-          )
+          "<b>Title of work</b>: ", `Title of Work`, "<br>",
+          "<b>Type of art</b>: ", Type, "<br>",
+          "<b>Description</b>: ", DescriptionOfwork, "<br> <br>",
+          "<b>Neighbourhood</b>: ", Neighbourhood, "<br>",
+          "<b>Year installed</b>: ", YearOfInstallation, "<br>",
+          "<b>Photo URL</b>: ", "<a href='",
+          PhotoURL,
+          "' target='_blank'>Click here to view image.</a>", "<br> <br>"
+          ),
+        popupOptions = popupOptions(
+          closeButton = TRUE,
+          className = "popup-scroll"
+        )
         )
   })
   
