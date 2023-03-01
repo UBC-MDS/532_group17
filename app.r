@@ -12,7 +12,8 @@ data <- separate(data,
                  into = c("latitude", "longitude"), sep = ", ") |> 
   mutate(latitude = as.numeric(latitude),
          longitude = as.numeric(longitude),
-         Neighborhood = coalesce("Neighborhood", "Geo Local Area"))
+         Neighborhood = coalesce("Neighborhood", "Geo Local Area")) |> 
+  filter(!if_any(Neighbourhood, is.na))
 # impute missing values in neighborhood using Geo Local Area
 
 ui <- fluidPage(
