@@ -87,7 +87,11 @@ ui <- fluidPage(
     # main panel for the map 
     mainPanel(
       fluidRow(
-        column(8, leafletOutput("mainMap", width = "450px", height = "478px"))
+        column(8, leafletOutput("mainMap", width = "450px", height = "478px")),
+          column(4,
+                 #
+                 #
+                )
         )
       )
     ),
