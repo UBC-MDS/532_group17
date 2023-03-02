@@ -90,6 +90,7 @@ ui <- fluidPage(
         column(8, leafletOutput("mainMap", width = "450px", height = "478px")),
           column(4,
                  #
+                 fluidRow(column(8, plotOutput("densityPlot")))
                  #
                 )
         )
