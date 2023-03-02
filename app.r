@@ -174,6 +174,12 @@ server <- function(input, output, session){
         )
         )
   })
+    
+
+ # Create density plot 
+ output$densityPlot <- renderPlot({
+     
+ })   
   
 }
 
