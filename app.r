@@ -178,7 +178,13 @@ server <- function(input, output, session){
 
  # Create density plot 
  output$densityPlot <- renderPlot({
-     
+     reactive_data() |>
+         ggplot(aes(YearOfInstallation)) +
+          geom_density(fill = "grey", alpha = 0.8) +
+          labs(
+            x = "Year of installation",
+            y = "Density"
+          )
  })   
   
 }
