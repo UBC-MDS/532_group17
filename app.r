@@ -89,8 +89,9 @@ ui <- fluidPage(
       fluidRow(
         column(8, leafletOutput("mainMap", width = "800px", height = "478px")),
           column(4,
+                 fluidRow(column(12, plotOutput("barPlot"))),
                  fluidRow(column(12, plotOutput("densityPlot")))
-                 fluidRow(column(12, plotOutput("densityPlot")))
+                 
                  #
                 )
         )
@@ -186,16 +187,23 @@ server <- function(input, output, session){
             y = "Density"
           )
  })   
- # Create density plot 
- output$densityPlot <- renderPlot({
-     reactive_data() |>
-         ggplot(aes(YearOfInstallation)) +
-          geom_density(fill = "grey", alpha = 0.8) +
-          labs(
-            x = "Year of installation",
-            y = "Density"
-          )
- })   
+ # Create barplot 
+ 
+ output$barPlot <- renderPlot({
+   grouped_data <- 
+     reactive_data() |> 
+     group_by(Neighbourhood) |> 
+     summarise(num_art = n())
+   
+   grouped_data |> 
+     ggplot(aes(x = num_art, y = reorder(Neighbourhood, -num_art))) +
+     geom_bar(stat = "identity") + 
+     labs(
+       x = "Number of art pieces",
+       y = "Neighbourhood"
+     )
+   
+ })
   
 }
 
