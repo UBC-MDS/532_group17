@@ -210,16 +210,15 @@ server <- function(input, output, session){
      reactive_data() |> 
        group_by(Type) |> 
        summarise(type_num = n()) |>
-       mutate(percent= round(type_num/sum(type_num)*100,0)) |>
        ggplot(aes(area = type_num, 
                   fill = Type, 
-                  label = paste0(percent, "%"))) +
+                  label = type_num)) +
        geom_treemap() +
        geom_treemap_text(colour = "white",
                        place = "centre",
                        size = 15) +
        scale_fill_viridis_d() +
-       labs(title = "Percentage of Art Types")
+       labs(title = "Number of Art Pieces by Type")
  })
   
 }

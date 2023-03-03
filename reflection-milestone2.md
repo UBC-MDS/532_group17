@@ -14,8 +14,7 @@ To date, we have built the majority of the dashboard to align with our mock-up. 
 created all our visualizations (with updates) and our interactive elements.
 
 We had to modify our code for the pie plot shown on the mock up as this did not
-do a good job displaying the variety of art types, and opted to do a tree plot instead. 
-
+do a good job displaying the variety of art types, and opted to do a tree plot instead.
 
 ### What is yet to be implemented?
 We opted to not include the artist data at this time, as it required a lot more data 
