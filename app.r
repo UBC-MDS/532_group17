@@ -212,8 +212,8 @@ server <- function(input, output, session){
        summarise(type_num = n()) |>
        mutate(percent= round(type_num/sum(type_num)*100,0)) |>
        ggplot(aes(area = type_num, 
-                                fill = Type, 
-                                label = paste0(percent, "%"))) +
+                  fill = Type, 
+                  label = paste0(percent, "%"))) +
        geom_treemap() +
        geom_treemap_text(colour = "white",
                        place = "centre",
