@@ -2,6 +2,7 @@ library(shiny)
 library(ggplot2)
 library(leaflet)
 library(tidyverse)
+library(treemapify)
 
 # read data
 data <- read_csv2("data/public-art.csv")
@@ -90,8 +91,8 @@ ui <- fluidPage(
         column(8, leafletOutput("mainMap", width = "600px", height = "478px")),
           column(4,
                  fluidRow(column(12, plotOutput("barPlot"))),
+                 fluidRow(column(12, plotOutput("treePlot"))),
                  fluidRow(column(12, plotOutput("densityPlot")))
-                 
                  #
                 )
         )
@@ -202,7 +203,23 @@ server <- function(input, output, session){
        x = "Number of art pieces",
        y = "Neighbourhood"
      )
+ })
+   # Create tree chart
    
+   output$treePlot <- renderPlot({
+     reactive_data() |> 
+       group_by(Type) |> 
+       summarise(type_num = n()) |>
+       mutate(percent= round(type_num/sum(type_num)*100,0)) |>
+       ggplot(aes(area = type_num, 
+                                fill = Type, 
+                                label = paste0(percent, "%"))) +
+       geom_treemap() +
+       geom_treemap_text(colour = "white",
+                       place = "centre",
+                       size = 15) +
+       scale_fill_viridis_d() +
+       labs(title = "Percentage of Art Types")
  })
   
 }
