@@ -2,9 +2,8 @@
 
 Welcome to VanArt! Our mission is to help you explore public art in the city of Vancouver 🎨🖌🌆
 
-**Try out the app: [VanArt](https://shlrley.shinyapps.io/VanArt/)**
+`Try out the app: [VanArt](https://shlrley.shinyapps.io/VanArt/)`
 
-**Contents:** 
 - Introduction 
 - The Data 
 - Dashboard Overview 
