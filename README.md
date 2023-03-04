@@ -3,13 +3,20 @@ Welcome to explore public art in the city of Vancouver!
 
 [Link to the VanArt app](https://shlrley.shinyapps.io/VanArt/)
 
+## Contents
 
 -[Public Arts in Vancouver](#public-arts-in_vancouver)
+
 -[VanArt Dashboard](#vanart-dashboard)
+
 -[Data We Use](#data-we-use)
+
 -[Run Locally](#run-locally)
+
 -[Contributing](#contributing)
+
 -[Authors](#authors)
+
 -[License](#license)
 
 ## Public Arts in Vancouver
