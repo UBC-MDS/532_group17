@@ -21,94 +21,13 @@ data <- separate(data,
 
 ui <- fluidPage(
   
-  # add theme 
-  #theme = bslib::bs_theme(bootswatch = 'minty'),
+  # theme 
   theme = shinytheme("lumen"),
   
-  # title 
-  titlePanel(
-    h2("VanArt: Discover Public Art in Vancouver!", align = "center")), 
-  
+  # title
+  navbarPage(title="VanArt: Discover Public Art in Vancouver! 🎨🌆"),
   br(),
   
-  # sidebar for filtering 
-  sidebarLayout(
-    tags$div(  # manual control over dimensions
-      class = "sidebar",
-      style = "width: 1000px;",
-      sidebarPanel(
-        fluidRow(
-          column(12,
-                 wellPanel(  # create separate boxes for each section
-                   # slider for choosing year
-                   sliderInput(inputId='bins',
-                               label='Year Installed',
-                               min=1950,
-                               max=2022,
-                               value=c(1950, 2022),  # add two way slider
-                               sep = "")  # removes comma in slider
-                 )
-          )
-        ),
-        # fluidRow(
-        #   column(12,
-        #          wellPanel(
-        #            # dropdown menu for choosing artist 
-        #            selectInput(
-        #              'artist', 'Artist',
-        #              choices = c("Select artist(s)" = '',
-        #                          unique(data$Artists)),
-        #              selected = "All",
-        #              multiple = TRUE
-        #              )
-        #          )
-        #   )
-        # ),
-        fluidRow(
-          column(12,
-                 wellPanel(
-                   # checkboxes for choosing art type 
-                   selectInput(
-                     'type', 'Art Type',
-                     choices = c("Select type(s) of art" = '',
-                                 unique(data$Type)),
-                     selected = "All",
-                     multiple = TRUE
-                   )
-                 )
-          )
-        ),
-        fluidRow(
-          column(12,
-                 wellPanel(
-                   # checkboxes for choosing neighbourhood 
-                   selectInput(
-                     'neighbourhood', 'Neighbourhood',
-                     choices = c("Select neighbourhood(s)" = '',
-                                 unique(data$Neighbourhood)),  
-                     selected = "All",
-                     multiple = TRUE
-                   )
-                 )
-          )
-        )
-      )
-    ),
-    # main panel for the map 
-    mainPanel(
-      fluidRow(
-        column(12, leafletOutput("mainMap", width = "600px", height = "478px")),
-        #        column(4,
-        #               fluidRow(column(12, plotOutput("barPlot"))),
-        #               fluidRow(column(12, plotOutput("treePlot"))),
-        #               fluidRow(column(12, plotOutput("densityPlot")))
-        #        )
-      )
-    )
-  ), 
-  
-  # adding scrollable popup scroll in leaflet render
-  tags$style(".popup-scroll {max-height: 300px; overflow-y: auto;}")
 )
 
 server <- function(input, output, session){
