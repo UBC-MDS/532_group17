@@ -3,6 +3,8 @@ library(ggplot2)
 library(leaflet)
 library(tidyverse)
 library(treemapify)
+library(thematic)
+library(shinythemes)
 
 # read data
 data <- read_csv2("data/public-art.csv")
@@ -19,88 +21,75 @@ data <- separate(data,
 
 ui <- fluidPage(
   
-  # title 
-  titlePanel("VanArt ~ Discover public art in Vancouver!"),
+  # theme 
+  theme = shinytheme("lumen"),
   
-  # sidebar for filtering
-  sidebarLayout(
-    tags$div(  # manual control over dimensions
-      class = "sidebar",
-      style = "width: 1000px;",
-    sidebarPanel(
-      fluidRow(
-        column(12,
-               wellPanel(  # create separate boxes for each section
-                 # slider for choosing year
-                 sliderInput(inputId='bins',
-                             label='Year Installed',
-                             min=1950,
-                             max=2022,
-                             value=c(1950, 2022),  # add two way slider
-                             sep = "")  # removes comma in slider
-               )
-        )
-      ),
-      # fluidRow(
-      #   column(12,
-      #          wellPanel(
-      #            # dropdown menu for choosing artist 
-      #            selectInput(
-      #              'artist', 'Artist',
-      #              choices = c("Select artist(s)" = '',
-      #                          unique(data$Artists)),
-      #              selected = "All",
-      #              multiple = TRUE
-      #              )
-      #          )
-      #   )
-      # ),
-      fluidRow(
-        column(12,
-               wellPanel(
-                 # checkboxes for choosing art type 
-                 selectInput(
-                   'type', 'Art Type',
-                   choices = c("Select type(s) of art" = '',
-                               unique(data$Type)),
-                   selected = "All",
-                   multiple = TRUE
-                 )
-               )
-        )
-      ),
-      fluidRow(
-        column(12,
-               wellPanel(
-                 # checkboxes for choosing neighbourhood 
-                 selectInput(
-                   'neighbourhood', 'Neighbourhood',
-                   choices = c("Select neighbourhood(s)" = '',
-                               unique(data$Neighbourhood)),  
-                   selected = "All",
-                   multiple = TRUE
-                   )
-                 )
-               )
-        )
-      )
+  # title
+  navbarPage(title="VanArt: Discover Public Art in Vancouver! 🎨🌆🖌"),
+  br(),
+  
+  # select input row 
+  fluidRow(
+    column(4,
+           wellPanel(sliderInput(inputId='bins',
+                                 label='Year Installed',
+                                 min=1950,
+                                 max=2022,
+                                 value=c(1950, 2022),  # add two way slider
+                                 sep = "")  # removes comma in slider
+           )
     ),
-    # main panel for the map 
-    mainPanel(
-      fluidRow(
-        column(8, leafletOutput("mainMap", width = "600px", height = "478px")),
-          column(4,
-                 fluidRow(column(12, plotOutput("barPlot"))),
-                 fluidRow(column(12, plotOutput("treePlot"))),
-                 fluidRow(column(12, plotOutput("densityPlot")))
-                 #
-                )
-        )
-      )
+    column(4,
+           wellPanel(
+             # checkboxes for choosing art type 
+             selectInput(
+               'type', 'Art Type',
+               choices = c("Select type(s) of art" = '',
+                           unique(data$Type)),
+               selected = "All",
+               multiple = TRUE
+             ))
     ),
+    column(4,
+           wellPanel(
+             # checkboxes for choosing neighbourhood 
+             selectInput(
+               'neighbourhood', 'Neighbourhood',
+               choices = c("Select neighbourhood(s)" = '',
+                           unique(data$Neighbourhood)),  
+               selected = "All",
+               multiple = TRUE
+             )
+           )
+    )
+  ),
+  br(),
+  
+  # map and charts 
+  fluidRow(
+    column(8, leafletOutput("mainMap", height = "450px")
+    ),
+    column(4, 
+           tabsetPanel(
+             id = "tabset",
+             tabPanel("Year Installed", plotOutput("densityPlot")),
+             tabPanel("Art Type", plotOutput("treePlot")),
+             tabPanel("Neighbourhood", plotOutput("barPlot"))
+           )
+    )
+  ),
+  br(),
+  br(),
+  
+  # footnote 
+  fluidRow(
+    p("Made by Robin Dhillon, Shirley Zhang, Lisa Sequeira, and Hongjian Li (MDS-V 2022-23)", align = "center")
+  ),
+  
   # adding scrollable popup scroll in leaflet render
   tags$style(".popup-scroll {max-height: 300px; overflow-y: auto;}")
-  )
+
+)
 
 server <- function(input, output, session){
   # applies theme selected for the app to ggplot
@@ -120,13 +109,6 @@ server <- function(input, output, session){
             YearOfInstallation >= input$bins[1] &
               YearOfInstallation <= input$bins[2])
       }
-      
-      # # filter based on artist
-      # if (!is.null(input$artist)) {
-      #   filtered_data <- 
-      #     filtered_data |> 
-      #     filter(Artist %in% input$artist)
-      # }
       
       # filter based on art type
       if (!is.null(input$type)) {
@@ -169,57 +151,59 @@ server <- function(input, output, session){
           "<b>Photo:</b><br><img src='",
           PhotoURL,
           "' style='max-width:200px; max-height:200px;'><br>"
-          ),
+        ),
         popupOptions = popupOptions(
           closeButton = TRUE,
           className = "popup-scroll"
         )
-        )
+      )
   })
+  
+  # Create line plot 
+  output$densityPlot <- renderPlot({
+    reactive_data() |>
+      ggplot(aes(x=YearOfInstallation)) +
+      geom_bar(stat="count", fill = "coral1") +
+      labs(
+        x = "Year of Installation",
+        y = "Number of Art Pieces"
+      ) +
+      ggtitle("Number of Art Pieces Installed Over Time")
+  })   
+  
+  
+  # Create barplot 
+  output$barPlot <- renderPlot({
+    grouped_data <- 
+      reactive_data() |> 
+      group_by(Neighbourhood) |> 
+      summarise(num_art = n())
     
-
- # Create density plot 
- output$densityPlot <- renderPlot({
-     reactive_data() |>
-         ggplot(aes(YearOfInstallation)) +
-          geom_density(fill = "grey", alpha = 0.8) +
-          labs(
-            x = "Year of installation",
-            y = "Density"
-          )
- })   
- # Create barplot 
- 
- output$barPlot <- renderPlot({
-   grouped_data <- 
-     reactive_data() |> 
-     group_by(Neighbourhood) |> 
-     summarise(num_art = n())
-   
-   grouped_data |> 
-     ggplot(aes(x = num_art, y = reorder(Neighbourhood, -num_art))) +
-     geom_bar(stat = "identity") + 
-     labs(
-       x = "Number of art pieces",
-       y = "Neighbourhood"
-     )
- })
-   # Create tree chart
-   
-   output$treePlot <- renderPlot({
-     reactive_data() |> 
-       group_by(Type) |> 
-       summarise(type_num = n()) |>
-       ggplot(aes(area = type_num, 
-                  fill = Type, 
-                  label = type_num)) +
-       geom_treemap() +
-       geom_treemap_text(colour = "white",
-                       place = "centre",
-                       size = 15) +
-       scale_fill_viridis_d() +
-       labs(title = "Number of Art Pieces by Type")
- })
+    grouped_data |> 
+      ggplot(aes(x = num_art, y = reorder(Neighbourhood, -num_art))) +
+      geom_bar(stat = "identity", fill = "coral1") + 
+      labs(
+        x = "Number of Art Pieces",
+        y = "Neighbourhood"
+      ) +
+      ggtitle("Number of Art Pieces by Neighbourhood")
+  })
+  
+  # Create tree chart
+  output$treePlot <- renderPlot({
+    reactive_data() |> 
+      group_by(Type) |> 
+      summarise(type_num = n()) |>
+      ggplot(aes(area = type_num, 
+                 fill = Type, 
+                 label = type_num)) +
+      geom_treemap() +
+      geom_treemap_text(colour = "white",
+                        place = "centre",
+                        size = 15) +
+      scale_fill_viridis_d(option = "magma") +
+      labs(title = "Number of Art Pieces by Type")
+  })
   
 }
 
