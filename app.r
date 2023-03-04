@@ -66,6 +66,22 @@ ui <- fluidPage(
   
   br(),
   
+  # map and charts 
+  fluidRow(
+    column(8, leafletOutput("mainMap")
+    ),
+    column(4, 
+           tabsetPanel(
+             id = "tabset",
+             tabPanel("Neighbourhood", plotOutput("barPlot")),
+             tabPanel("Art Type", plotOutput("treePlot")),
+             tabPanel("Year of Installation", plotOutput("densityPlot"))
+           )
+    )
+  ),
+  
+  br(),
+  
   
 )
 
