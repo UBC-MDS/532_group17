@@ -15,11 +15,25 @@ Welcome to VanArt! Our mission is to help you explore public art in the city of 
 
 ## Introduction
 
-**Application Description and Schematic**
+**The problem**
 
-Our application will contain three different panels, all centered around a map of Vancouver displaying the locations of the public art. When first opening the application (without any user input) the map will display all the art icons. As the user selects options on the left hand panel, they will filter down the art icons visible on the map. The panel on the left will include the year(s) when the art was installed, the type (or category) of art (mural, sculpture etc.), the artist name, and the neighbourhood of interest. The user can also interact with the map directly, when they select an icon of interest, a panel will appear providing the user all the details about that particular public art piece (including the name of the work, an image of it, the artist name, its address and finally a website link with more information about the art). Finally, the panel on the right hand side will show the user some basic statistics to accompany the map, based on the filtered criteria the user entered in the left most panel. This panel will include a bar chart to show the number of art pieces against the year installed, a pie chart to show the types of art, and a density graph to show areas where most of the art is found.
+Public art is an important aspect of any city as it reflects the culture, history, and values of a community. Vancouver is known for its vibrant and diverse arts scene, and as a result, it has a plethora of public art installations that locals and tourists can explore. However, apart from some well-known museums that gather art collections together, with so many public art installations scattered throughout the city, it can be difficult for tourists to find the art they are interested in. As a result, we want to provide tourists with a centralized location to find information on public art in Vancouver.
 
-![](img/VanArt_mockup.jpg) 
+**The solution**
+
+Our `VanArt` dashboard provides a comprehensive and interactive dashboard that allows tourists to easily find the public art they are interested in. By providing information on the location, the artists, year of installation, etc. our dashboard will not only help tourists find the public art they are looking for but also provide context and background on each installation. Additionally, `VanArt` can serve as a tool to promote public art and encourage people to explore Vancouver. Overall, `VanArt` has the potential to enhance the experience of tourists visiting Vancouver by providing them with a unique and enriching way to explore the city's public art. Although geared towards tourists, `VanArt` can be used by anyone interested in the Vancouver public art scene; locals who would like to explore their city’s public art are welcome to and encouraged to use `VanArt`.
+
+
+## The Data 
+
+
+
+
+## Dashboard Overview 
+
+
+
+![VanArt Gif](vanart.gif)
 
 
 ## Contributing
