@@ -2,14 +2,14 @@
 
 Welcome to VanArt! Our mission is to help you explore public art in the city of Vancouver 🎨🖌🌆
 
-`Try out the app: [VanArt](https://shlrley.shinyapps.io/VanArt/)`
+Try out the app: [VanArt](https://shlrley.shinyapps.io/VanArt/)
 
-- Introduction 
-- The Data 
-- Dashboard Overview 
-- Contributing 
-- License 
-- Authors 
+- [Introduction](https://github.com/UBC-MDS/VanArt/tree/milestone2-edits#introduction)
+- [The Data](https://github.com/UBC-MDS/VanArt/tree/milestone2-edits#the-data)
+- [Dashboard Overview](https://github.com/UBC-MDS/VanArt/tree/milestone2-edits#dashboard-overview)
+- [Contributing](https://github.com/UBC-MDS/VanArt/tree/milestone2-edits#contributing)
+- [License](https://github.com/UBC-MDS/VanArt/tree/milestone2-edits#license)
+- [Authors](https://github.com/UBC-MDS/VanArt/tree/milestone2-edits#authors)
 
 
 ## Introduction
