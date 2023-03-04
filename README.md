@@ -74,7 +74,7 @@ RScript app.R
 ## Contributing
 
 Interested in contributing? You are welcomed to make contribution on VanArt App. We appreciate for your further thoughts including but not limited to:
--   The up-to-dated data that contains the information of more art pieces
+-   The up-to-dated data that contains the information of more art pieces and the art pieces after 2022
 -   The information of the artist of these public arts
 
 Also, please check out the [contributing](CONTRIBUTING.md) guidelines. Please note that this project is released with a [Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
