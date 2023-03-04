@@ -82,7 +82,14 @@ ui <- fluidPage(
   
   br(),
   
+  # footnote 
+  fluidRow(
+    p("Made by Robin Dhillon, Shirley Zhang, Lisa Sequeira, Hongjian Li (MDS-V 2022-23)", align = "center")
+  ),
   
+  # adding scrollable popup scroll in leaflet render
+  tags$style(".popup-scroll {max-height: 300px; overflow-y: auto;}")
+
 )
 
 server <- function(input, output, session){
