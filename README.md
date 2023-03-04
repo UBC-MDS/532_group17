@@ -10,7 +10,7 @@ Try out the app here: **[VanArt](https://shlrley.shinyapps.io/VanArt/)**
 - [Dashboard Overview](#dashboard-overview)
 - [Data Used](#data-used)
 - [Run Locally](#run-locally)
-- [Contributing](#contributingg)
+- [Contributing](#contributing)
 - [License](#license)
 - [Authors](#authors)
 
