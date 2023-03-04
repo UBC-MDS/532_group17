@@ -6,7 +6,7 @@ Try out the app here: **[VanArt](https://shlrley.shinyapps.io/VanArt/)**
 
 ---
 
-- [Introduction](https://github.com/UBC-MDS/VanArt/tree/milestone-2-edits#introduction)
+- [Introduction](#introduction)
 - [Dashboard Overview](https://github.com/UBC-MDS/VanArt/tree/milestone-2-edits#dashboard-overview)
 - [Data Used](https://github.com/UBC-MDS/VanArt/tree/milestone-2-edits#data-used)
 - [Run Locally](https://github.com/UBC-MDS/VanArt/tree/milestone-2-edits#run-locally)
