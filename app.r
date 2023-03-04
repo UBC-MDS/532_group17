@@ -25,7 +25,7 @@ ui <- fluidPage(
   theme = shinytheme("lumen"),
   
   # title
-  navbarPage(title="VanArt: Discover Public Art in Vancouver! 🎨🌆"),
+  navbarPage(title="VanArt: Discover Public Art in Vancouver! 🎨🌆🖌"),
   br(),
   
   # select input row 
@@ -171,7 +171,6 @@ server <- function(input, output, session){
       ggtitle("Number of Art Pieces Installed Over Time")
   })   
   
-  #alpha = 0.8
   
   # Create barplot 
   output$barPlot <- renderPlot({
@@ -186,7 +185,8 @@ server <- function(input, output, session){
       labs(
         x = "Number of Art Pieces",
         y = "Neighbourhood"
-      )
+      ) +
+      ggtitle("Number of Art Pieces by Neighbourhood")
   })
   
   # Create tree chart
