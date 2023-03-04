@@ -28,6 +28,45 @@ ui <- fluidPage(
   navbarPage(title="VanArt: Discover Public Art in Vancouver! 🎨🌆"),
   br(),
   
+  # select input row 
+  fluidRow(
+    column(4,
+           wellPanel(sliderInput(inputId='bins',
+                                 label='Year Installed',
+                                 min=1950,
+                                 max=2022,
+                                 value=c(1950, 2022),  # add two way slider
+                                 sep = "")  # removes comma in slider
+           )
+    ),
+    column(4,
+           wellPanel(
+             # checkboxes for choosing art type 
+             selectInput(
+               'type', 'Art Type',
+               choices = c("Select type(s) of art" = '',
+                           unique(data$Type)),
+               selected = "All",
+               multiple = TRUE
+             ))
+    ),
+    column(4,
+           wellPanel(
+             # checkboxes for choosing neighbourhood 
+             selectInput(
+               'neighbourhood', 'Neighbourhood',
+               choices = c("Select neighbourhood(s)" = '',
+                           unique(data$Neighbourhood)),  
+               selected = "All",
+               multiple = TRUE
+             )
+           )
+    )
+  ),
+  
+  br(),
+  
+  
 )
 
 server <- function(input, output, session){
