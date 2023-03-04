@@ -63,28 +63,27 @@ ui <- fluidPage(
            )
     )
   ),
-  
   br(),
   
   # map and charts 
   fluidRow(
-    column(8, leafletOutput("mainMap")
+    column(8, leafletOutput("mainMap", height = "450px")
     ),
     column(4, 
            tabsetPanel(
              id = "tabset",
-             tabPanel("Neighbourhood", plotOutput("barPlot")),
+             tabPanel("Year Installed", plotOutput("densityPlot")),
              tabPanel("Art Type", plotOutput("treePlot")),
-             tabPanel("Year of Installation", plotOutput("densityPlot"))
+             tabPanel("Neighbourhood", plotOutput("barPlot"))
            )
     )
   ),
-  
+  br(),
   br(),
   
   # footnote 
   fluidRow(
-    p("Made by Robin Dhillon, Shirley Zhang, Lisa Sequeira, Hongjian Li (MDS-V 2022-23)", align = "center")
+    p("Made by Robin Dhillon, Shirley Zhang, Lisa Sequeira, and Hongjian Li (MDS-V 2022-23)", align = "center")
   ),
   
   # adding scrollable popup scroll in leaflet render
@@ -110,13 +109,6 @@ server <- function(input, output, session){
             YearOfInstallation >= input$bins[1] &
               YearOfInstallation <= input$bins[2])
       }
-      
-      # # filter based on artist
-      # if (!is.null(input$artist)) {
-      #   filtered_data <- 
-      #     filtered_data |> 
-      #     filter(Artist %in% input$artist)
-      # }
       
       # filter based on art type
       if (!is.null(input$type)) {
@@ -167,19 +159,21 @@ server <- function(input, output, session){
       )
   })
   
-  
-  # Create density plot 
+  # Create line plot 
   output$densityPlot <- renderPlot({
     reactive_data() |>
-      ggplot(aes(YearOfInstallation)) +
-      geom_density(fill = "grey", alpha = 0.8) +
+      ggplot(aes(x=YearOfInstallation)) +
+      geom_bar(stat="count", fill = "coral1") +
       labs(
-        x = "Year of installation",
-        y = "Density"
-      )
+        x = "Year of Installation",
+        y = "Number of Art Pieces"
+      ) +
+      ggtitle("Number of Art Pieces Installed Over Time")
   })   
-  # Create barplot 
   
+  #alpha = 0.8
+  
+  # Create barplot 
   output$barPlot <- renderPlot({
     grouped_data <- 
       reactive_data() |> 
@@ -188,14 +182,14 @@ server <- function(input, output, session){
     
     grouped_data |> 
       ggplot(aes(x = num_art, y = reorder(Neighbourhood, -num_art))) +
-      geom_bar(stat = "identity") + 
+      geom_bar(stat = "identity", fill = "coral1") + 
       labs(
-        x = "Number of art pieces",
+        x = "Number of Art Pieces",
         y = "Neighbourhood"
       )
   })
-  # Create tree chart
   
+  # Create tree chart
   output$treePlot <- renderPlot({
     reactive_data() |> 
       group_by(Type) |> 
@@ -207,7 +201,7 @@ server <- function(input, output, session){
       geom_treemap_text(colour = "white",
                         place = "centre",
                         size = 15) +
-      scale_fill_viridis_d() +
+      scale_fill_viridis_d(option = "magma") +
       labs(title = "Number of Art Pieces by Type")
   })
   
