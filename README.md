@@ -36,7 +36,7 @@ Our application contains three different panels:
     the year(s) when the art was installed, the type (or category) of art (mural, sculpture etc.), 
     and the neighborhood of interest. 
 -   `The main map panel`: It displays the locations of the public art. When first opening the application 
-    (without any user input) the map will display number of arts in each neighborhood. The user can also 
+    (without any user input) the map will display all the art pieces in Vancouver and the corresponding statistics, such as number of arts in each neighborhood, the number of arts for each art type, and more. The user can also 
     interact with the map directly. When selecting an icon of interest, a panel will appear providing 
     the user all the details about that particular public art piece (including the name of the work, 
     an image of it, the artist name, its address and finally a website link with more information about the art).  
@@ -65,8 +65,8 @@ RScript app.R
 
 ## Contributing
 
-Interested in contributing? You are welcomed to make contribution on VanArt App. We appreciate for your further thoughts including but not limited to:
--   The up-to-dated data that contains the information of more art pieces and the art pieces after 2022
+Interested in contributing? You are welcome to make contributions on our VanArt App! We would love updated information regarding current art pieces, and information regarding art that we don't have in our database. Some updates include:
+-   The up-to-date data that contains the information of more art pieces and the art pieces after 2022
 -   The information of the artist of these public arts
 
 Also, please check out the [contributing](CONTRIBUTING.md) guidelines. Please note that this project is released with a [Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
