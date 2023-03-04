@@ -1,31 +1,34 @@
 # VanArt
-Welcome to explore public art in the city of Vancouver!
 
-[Link to the VanArt app](https://shlrley.shinyapps.io/VanArt/)
+Welcome to VanArt! Our mission is to help you explore public art in the city of Vancouver 🎨🖌🌆
 
-## Contents
+Try out the app here: **[VanArt](https://shlrley.shinyapps.io/VanArt/)**
 
--[Public Arts in Vancouver](#public-arts-in_vancouver)
+---
 
--[VanArt Dashboard](#vanart-dashboard)
+- [Introduction](https://github.com/UBC-MDS/VanArt/tree/milestone-2-edits#introduction)
+- [Dashboard Overview](https://github.com/UBC-MDS/VanArt/tree/milestone-2-edits#dashboard-overview)
+- [Data Used](https://github.com/UBC-MDS/VanArt/tree/milestone-2-edits#data-used)
+- [Run Locally](https://github.com/UBC-MDS/VanArt/tree/milestone-2-edits#run-locally)
+- [Contributing](https://github.com/UBC-MDS/VanArt/tree/milestone-2-edits#contributingg)
+- [License](https://github.com/UBC-MDS/VanArt/tree/milestone-2-edits#license)
+- [Authors](https://github.com/UBC-MDS/VanArt/tree/milestone-2-edits#authors)
 
--[Data We Use](#data-we-use)
 
--[Run Locally](#run-locally)
+## Introduction
 
--[Contributing](#contributing)
-
--[Authors](#authors)
-
--[License](#license)
-
-## Public Arts in Vancouver
+**The problem**
 
 Public art is an important aspect of any city as it reflects the culture, history, and values of a community. Vancouver is known for its vibrant and diverse arts scene, and as a result, it has a plethora of public art installations that locals and tourists can explore. However, apart from some well-known museums that gather art collections together, with so many public art installations scattered throughout the city, it can be difficult for tourists to find the art they are interested in. As a result, we want to provide tourists with a centralized location to find information on public art in Vancouver.
 
-## VanArt Dashboard
+**The solution**
 
-![](img/VanArt_screenshot.jpg)
+Our `VanArt` dashboard provides a comprehensive and interactive dashboard that allows tourists to easily find the public art they are interested in. By providing information on the location, the artists, year of installation, etc. our dashboard will not only help tourists find the public art they are looking for but also provide context and background on each installation. Additionally, `VanArt` can serve as a tool to promote public art and encourage people to explore Vancouver. Overall, `VanArt` has the potential to enhance the experience of tourists visiting Vancouver by providing them with a unique and enriching way to explore the city's public art. Although geared towards tourists, `VanArt` can be used by anyone interested in the Vancouver public art scene; locals who would like to explore their city’s public art are welcome to and encouraged to use `VanArt`.
+
+
+## Dashboard Overview
+
+![VanArt Gif](vanart.gif)
 
 Our application contains three different panels:
 -   `The interactivity filter panel`: As the user selects options on the panel on the top, 
@@ -39,33 +42,22 @@ Our application contains three different panels:
     an image of it, the artist name, its address and finally a website link with more information about the art).  
 -   `The statistics panel`: Shows the user some basic statistics to accompany the map, based on the 
     filtered criteria the user entered in the left most panel. This panel will include a bar chart 
-    to show the number of art pieces against the year installed, a heat map to show the types of art, 
-    and a bar chart to show the number of art pieces by different neighborhood.
+    to show the number of art pieces against the year installed, a tree plot to show the types of art, 
+    and a bar chart to show the number of art pieces by different neighborhoods.
 
-The interactivity filter panel and the statistics panel centered around the main map panel of Vancouver 
-which . 
+## Data Used
 
+The data set we used to create this app is modified from [City of Vancouver Open Data Portal](https://opendata.vancouver.ca/explore/dataset/public-art/export/).
 
-## Data We Use
+Our modified data contains the feature about: the title of the artwork, the type of art (mural, statue, etc.), address of artwork, neighborhood where the work is located, latitude and longitude of the artwork, the photo URL, URL with artwork information, brief introduction to the artwork, and the year artwork was installed.
 
-The data set we used to create this App is modified from[City of Vancouver Open Data Portal](https://opendata.vancouver.ca/explore/dataset/public-art/export/)
-
-Our modified data got rid from the art pieces that have been demolished and it contains the feature about: the title of the artwork, the type of art (mural, statue, etc.),address of artwork, neighborhood where the work is located, latitude and longitude of the artwork, the photo URL, URL with artwork information, brief introduction to the artwork, and the year artwork was installed.
-
-## Authors:
-
-    - Robin Dhillon
-    - Shirley Zhang
-    - Lisa Sequeira 
-    - Hongjian Li
-
-This data science project is created for DSCI 532 (Data Visualization II); a course in the Master of Data Science program at the University of British Columbia.
 
 ## Run Locally
 
 To make this app run locally on your computer, please:
--   Clone or fork this repository first
--   Then, navigate to the top directory and run the command in the terminal below:
+
+1. Clone or fork this repository first
+2. Then, navigate to the top directory and run the command in the terminal below:
 
 ```{bash}
 RScript app.R
@@ -83,3 +75,12 @@ Also, please check out the [contributing](CONTRIBUTING.md) guidelines. Please no
 ## License
 
 `VanArt` is licensed under the terms of the [MIT](LICENSE) license.
+
+## Authors:
+
+- Robin Dhillon
+- Shirley Zhang
+- Lisa Sequeira 
+- Hongjian Li
+
+This data science project is created for DSCI 532 (Data Visualization II); a course in the Master of Data Science program at the University of British Columbia.
