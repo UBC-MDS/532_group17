@@ -3,6 +3,7 @@ library(ggplot2)
 library(leaflet)
 library(tidyverse)
 library(treemapify)
+library(thematic)
 
 # read data
 data <- read_csv2("data/public-art.csv")
@@ -19,8 +20,11 @@ data <- separate(data,
 
 ui <- fluidPage(
   
+  # add theme 
+  theme = bslib::bs_theme(bootswatch = 'minty'),
+  
   # title 
-  titlePanel("VanArt ~ Discover public art in Vancouver!"),
+  titlePanel("VanArt ~ Discover public art in Vancouver!"), 
   
   # sidebar for filtering
   sidebarLayout(
