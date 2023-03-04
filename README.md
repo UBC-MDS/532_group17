@@ -2,14 +2,17 @@
 
 Welcome to VanArt! Our mission is to help you explore public art in the city of Vancouver 🎨🖌🌆
 
-Try out the app: [VanArt](https://shlrley.shinyapps.io/VanArt/)
+Try out the app here: **[VanArt](https://shlrley.shinyapps.io/VanArt/)**
 
-- [Introduction](https://github.com/UBC-MDS/VanArt/tree/milestone2-edits#introduction)
-- [The Data](https://github.com/UBC-MDS/VanArt/tree/milestone2-edits#the-data)
-- [Dashboard Overview](https://github.com/UBC-MDS/VanArt/tree/milestone2-edits#dashboard-overview)
-- [Contributing](https://github.com/UBC-MDS/VanArt/tree/milestone2-edits#contributing)
-- [License](https://github.com/UBC-MDS/VanArt/tree/milestone2-edits#license)
-- [Authors](https://github.com/UBC-MDS/VanArt/tree/milestone2-edits#authors)
+---
+
+- [Introduction](https://github.com/UBC-MDS/VanArt/tree/milestone-2-edits#introduction)
+- [Dashboard Overview](https://github.com/UBC-MDS/VanArt/tree/milestone-2-edits#dashboard-overview)
+- [Data Used](https://github.com/UBC-MDS/VanArt/tree/milestone-2-edits#data-used)
+- [Run Locally](https://github.com/UBC-MDS/VanArt/tree/milestone-2-edits#run-locally)
+- [Contributing](https://github.com/UBC-MDS/VanArt/tree/milestone-2-edits#contributingg)
+- [License](https://github.com/UBC-MDS/VanArt/tree/milestone-2-edits#license)
+- [Authors](https://github.com/UBC-MDS/VanArt/tree/milestone-2-edits#authors)
 
 
 ## Introduction
