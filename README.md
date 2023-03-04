@@ -26,12 +26,12 @@ Our `VanArt` dashboard provides a comprehensive and interactive dashboard that a
 
 ## The Data 
 
-
+... 
 
 
 ## Dashboard Overview 
 
-
+... 
 
 ![VanArt Gif](vanart.gif)
 
