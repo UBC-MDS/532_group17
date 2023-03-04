@@ -39,25 +39,22 @@ Our application contains three different panels:
     an image of it, the artist name, its address and finally a website link with more information about the art).  
 -   `The statistics panel`: Shows the user some basic statistics to accompany the map, based on the 
     filtered criteria the user entered in the left most panel. This panel will include a bar chart 
-    to show the number of art pieces against the year installed, a heat map to show the types of art, 
-    and a bar chart to show the number of art pieces by different neighborhood.
-
-The interactivity filter panel and the statistics panel centered around the main map panel of Vancouver 
-which . 
-
+    to show the number of art pieces against the year installed, a tree plot to show the types of art, 
+    and a bar chart to show the number of art pieces by different neighborhoods.
 
 ## Data Used
 
-The data set we used to create this App is modified from[City of Vancouver Open Data Portal](https://opendata.vancouver.ca/explore/dataset/public-art/export/)
+The data set we used to create this app is modified from [City of Vancouver Open Data Portal](https://opendata.vancouver.ca/explore/dataset/public-art/export/).
 
-Our modified data got rid from the art pieces that have been demolished and it contains the feature about: the title of the artwork, the type of art (mural, statue, etc.),address of artwork, neighborhood where the work is located, latitude and longitude of the artwork, the photo URL, URL with artwork information, brief introduction to the artwork, and the year artwork was installed.
+Our modified data contains the feature about: the title of the artwork, the type of art (mural, statue, etc.), address of artwork, neighborhood where the work is located, latitude and longitude of the artwork, the photo URL, URL with artwork information, brief introduction to the artwork, and the year artwork was installed.
 
 
 ## Run Locally
 
 To make this app run locally on your computer, please:
--   Clone or fork this repository first
--   Then, navigate to the top directory and run the command in the terminal below:
+
+1. Clone or fork this repository first
+2. Then, navigate to the top directory and run the command in the terminal below:
 
 ```{bash}
 RScript app.R
