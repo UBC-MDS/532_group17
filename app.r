@@ -24,9 +24,20 @@ ui <- fluidPage(
   # theme 
   theme = shinytheme("lumen"),
   
-  # title
-  navbarPage(title="VanArt: Discover Public Art in Vancouver!"),
-  br(),
+  # title option 1
+  #navbarPage(title="VanArt: Discover Public Art in Vancouver!"),
+  
+  # title option 2
+  #navbarPage(
+  #  title="VanArt: Discover Public Art in Vancouver!",
+  #  tabPanel("Component 1")),
+  
+  # title option 3
+  fluidRow(
+    column(12, wellPanel(h2("VanArt"), h5("Discover Public Art in Vancouver!")))
+  ),
+  
+  #br(), 
   
   # select input row 
   fluidRow(
