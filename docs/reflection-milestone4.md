@@ -10,6 +10,10 @@ Group Members:
 
 ### What we have done so far?
 
+*Improvements implemented in Milestone 4*
+
+1. We added a `navbarPage` panel to create a "Dashboard" page which holds our main dashboard, and an "About" page which gives the user information about our dashboard. 
+
 ### What are limitations of our dashboard? 
 
 ### What is yet to be implemented?
