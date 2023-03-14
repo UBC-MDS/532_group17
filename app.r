@@ -115,17 +115,19 @@ ui <- fluidPage(
       
   tabPanel("About",
       p(h3(strong("Welcome!")),
-        "VanArt is a dashboard that lets you explore art installed around Vancouver.",
+        "VanArt is a dashboard that lets you explore art installed around Vancouver.
+        With our dashboard, you can:",
         br(),
-        "",
-        "Public art is an important aspect of any city as it reflects the culture, 
-        history, and values of a community. Vancouver is known for its vibrant and 
-        diverse arts scene, and as a result, it has a plethora of public art installations 
-        that locals and tourists can explore. However, apart from some well-known museums 
-        that gather art collections together, with so many public art installations scattered 
-        throughout the city, it can be difficult for tourists to find the art they 
-        are interested in. As a result, we want to provide tourists with a centralized 
-        location to find information on public art in Vancouver.",
+        br(),
+        tags$ul(
+          tags$li("Click around the map to find art in different locations"), 
+          tags$li("Filter by the year(s) art pieces were installed"), 
+          tags$li("Filter by the type of art you want to see"),
+          tags$li("Filter by the neighbourhood you want to explore")
+        ),
+        "We hope VanArt will enhance your Vancouver experience, whether you're 
+        a tourist visiting Vancouver for the first time or a local wishing to 
+        explore the city's public art scene!",
         br(),
         br(),
         img(src='the_birds.jpg', align = "center", height = 400),
@@ -133,6 +135,9 @@ ui <- fluidPage(
         em('"The Birds" by Myfanwy MacLeod (Photo by Robert Keziere)'),
         hr(),
         h4(strong("Data")),
+        "The data used to create this app was accessed from the",
+        tags$a(href="https://opendata.vancouver.ca/explore/dataset/public-art/export/", 
+               "City of Vancouver Open Data Portal"),
         hr(),
         h4(strong("Attributions")),
         "ShinyApp, logo image",
