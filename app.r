@@ -124,7 +124,12 @@ ui <- fluidPage(
         throughout the city, it can be difficult for tourists to find the art they 
         are interested in. As a result, we want to provide tourists with a centralized 
         location to find information on public art in Vancouver.",
-        img(src='the_birds.jpg', align = "right"),
+        br(),
+        br(),
+        img(src='the_birds.jpg', align = "center", height = 400),
+        
+        br(),
+        em("caption"),
         hr(),
         h4(strong("Data")),
         hr(),
