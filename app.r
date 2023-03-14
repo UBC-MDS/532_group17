@@ -33,21 +33,30 @@ ui <- fluidPage(
   #  tabPanel("Component 1")),
   
   # title option 3
-  fluidRow(
-    column(12, wellPanel(h2("VanArt"), h5("Discover Public Art in Vancouver!")))
-  ),
+  # fluidRow(
+  #   column(12, wellPanel(h2("VanArt"), h5("Discover Public Art in Vancouver!")))
+  # ),
+  
+  # title option 4 
+  wellPanel(
+    titlePanel(title = span(img(src = "van_logo.png", height = 70), 
+                            strong("VanArt"),
+                            em("| Discover Public Art in Vancouver!"), 
+                            style = "font-size:23px;")), 
+    style = "padding: 2px;"), 
   
   #br(), 
   
   # select input row 
   fluidRow(
     column(4,
-           wellPanel(sliderInput(inputId='bins',
-                                 label='Year Installed',
-                                 min=1950,
-                                 max=2022,
-                                 value=c(1950, 2022),  # add two way slider
-                                 sep = "")  # removes comma in slider
+           wellPanel(
+             sliderInput(inputId='bins',
+                         label='Year Installed',
+                         min=1950,
+                         max=2022,
+                         value=c(1950, 2022),  # add two way slider
+                         sep = "")  # removes comma in slider
            )
     ),
     column(4,
@@ -59,7 +68,8 @@ ui <- fluidPage(
                            unique(data$Type)),
                selected = "All",
                multiple = TRUE
-             ))
+             )
+             )
     ),
     column(4,
            wellPanel(
