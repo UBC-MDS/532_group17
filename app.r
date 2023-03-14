@@ -38,78 +38,108 @@ ui <- fluidPage(
   # ),
   
   # title option 4 
-  wellPanel(
+  #wellPanel(
     titlePanel(title = span(img(src = "van_logo.png", height = 70), 
                             strong("VanArt"),
-                            em("| Discover Public Art in Vancouver!"), 
+                            "|",
+                            em("Discover Public Art in Vancouver!"), 
                             style = "font-size:23px;")), 
-    style = "padding: 2px;"), 
-  
+    #style = "padding: 2px;"), 
   #br(), 
   
-  # select input row 
-  fluidRow(
-    column(4,
-           wellPanel(
-             sliderInput(inputId='bins',
-                         label='Year Installed',
-                         min=1950,
-                         max=2022,
-                         value=c(1950, 2022),  # add two way slider
-                         sep = "")  # removes comma in slider
-           )
-    ),
-    column(4,
-           wellPanel(
-             # checkboxes for choosing art type 
-             selectInput(
-               'type', 'Art Type',
-               choices = c("Select type(s) of art" = '',
-                           unique(data$Type)),
-               selected = "All",
-               multiple = TRUE
-             )
-             )
-    ),
-    column(4,
-           wellPanel(
-             # checkboxes for choosing neighbourhood 
-             selectInput(
-               'neighbourhood', 'Neighbourhood',
-               choices = c("Select neighbourhood(s)" = '',
-                           unique(data$Neighbourhood)),  
-               selected = "All",
-               multiple = TRUE
-             )
-           )
-    )
-  ),
-  br(),
+  navbarPage("",
+    tabPanel("Dashboard",
   
-  # map and charts 
-  fluidRow(
-    column(8, leafletOutput("mainMap", height = "450px")
-    ),
-    column(4, 
-           tabsetPanel(
-             id = "tabset",
-             tabPanel("Year Installed", plotOutput("densityPlot")),
-             tabPanel("Art Type", plotOutput("treePlot")),
-             tabPanel("Neighbourhood", plotOutput("barPlot"))
-           )
-    )
-  ),
-  br(),
-  br(),
-  
-  # footnote 
-  fluidRow(
-    p("Made by Robin Dhillon, Shirley Zhang, Lisa Sequeira, and Hongjian Li (MDS-V 2022-23)", align = "center")
-  ),
-  
-  # adding scrollable popup scroll in leaflet render
-  tags$style(".popup-scroll {max-height: 300px; overflow-y: auto;}")
-
+      # select input row 
+      fluidRow(
+        column(4,
+               wellPanel(
+                 sliderInput(inputId='bins',
+                             label='Year Installed',
+                             min=1950,
+                             max=2022,
+                             value=c(1950, 2022),  # add two way slider
+                             sep = ""),  # removes comma in slider
+                 style = "padding: 8px;"
+                 )
+        ),
+        column(4,
+               wellPanel(
+                 # checkboxes for choosing art type 
+                 selectInput(
+                   'type', 'Art Type',
+                   choices = c("Select type(s) of art" = '',
+                               unique(data$Type)),
+                   selected = "All",
+                   multiple = TRUE)
+                 )
+        ),
+        column(4,
+               wellPanel(
+                 # checkboxes for choosing neighbourhood 
+                 selectInput(
+                   'neighbourhood', 'Neighbourhood',
+                   choices = c("Select neighbourhood(s)" = '',
+                               unique(data$Neighbourhood)),  
+                   selected = "All",
+                   multiple = TRUE
+                 )
+               )
+        )
+      ),
+      br(),
+      
+      # map and charts 
+      fluidRow(
+        column(8, leafletOutput("mainMap", height = "450px")
+        ),
+        column(4, 
+               tabsetPanel(
+                 id = "tabset",
+                 tabPanel("Year Installed", plotOutput("densityPlot")),
+                 tabPanel("Art Type", plotOutput("treePlot")),
+                 tabPanel("Neighbourhood", plotOutput("barPlot"))
+               )
+        )
+      ),
+      br(),
+      br(),
+      
+      # footnote 
+      # fluidRow(
+      #   p("Made by Robin Dhillon, Shirley Zhang, Lisa Sequeira, and Hongjian Li (MDS-V 2022-23)", align = "center")
+      # ),
+      
+      # adding scrollable popup scroll in leaflet render
+      tags$style(".popup-scroll {max-height: 300px; overflow-y: auto;}")),
+      
+  tabPanel("About",
+      p(h3(strong("Welcome!")),
+        "VanArt is a dashboard that 
+        Public art is an important aspect of any city as it reflects the culture, 
+        history, and values of a community. Vancouver is known for its vibrant and 
+        diverse arts scene, and as a result, it has a plethora of public art installations 
+        that locals and tourists can explore. However, apart from some well-known museums 
+        that gather art collections together, with so many public art installations scattered 
+        throughout the city, it can be difficult for tourists to find the art they 
+        are interested in. As a result, we want to provide tourists with a centralized 
+        location to find information on public art in Vancouver.",
+        img(src='the_birds.jpg', align = "right"),
+        hr(),
+        h4(strong("Data")),
+        hr(),
+        h4(strong("Attributions")),
+        "ShinyApp, logo image",
+        hr(),
+        h4(strong("GitHub")),
+        "Please visit our GitHub for more information about our dashboard:", 
+        a(href="VanArt", "https://github.com/UBC-MDS/VanArt"),
+        hr(),
+        h4(strong("Authors")),
+        "VanArt was made by Hongjian Li, Lisa Sequeira, Robin Dhillon, and Shirley Zhang, students in 
+        the Masters of Data Science program at the University of British Columbia.",
+        ))
+  )
 )
 
 server <- function(input, output, session){
