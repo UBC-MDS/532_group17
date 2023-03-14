@@ -24,71 +24,143 @@ ui <- fluidPage(
   # theme 
   theme = shinytheme("lumen"),
   
-  # title
-  navbarPage(title="VanArt: Discover Public Art in Vancouver! 🎨🌆🖌"),
-  br(),
+  # title option 1
+  #navbarPage(title="VanArt: Discover Public Art in Vancouver!"),
   
-  # select input row 
-  fluidRow(
-    column(4,
-           wellPanel(sliderInput(inputId='bins',
-                                 label='Year Installed',
-                                 min=1950,
-                                 max=2022,
-                                 value=c(1950, 2022),  # add two way slider
-                                 sep = "")  # removes comma in slider
-           )
-    ),
-    column(4,
-           wellPanel(
-             # checkboxes for choosing art type 
-             selectInput(
-               'type', 'Art Type',
-               choices = c("Select type(s) of art" = '',
-                           unique(data$Type)),
-               selected = "All",
-               multiple = TRUE
-             ))
-    ),
-    column(4,
-           wellPanel(
-             # checkboxes for choosing neighbourhood 
-             selectInput(
-               'neighbourhood', 'Neighbourhood',
-               choices = c("Select neighbourhood(s)" = '',
-                           unique(data$Neighbourhood)),  
-               selected = "All",
-               multiple = TRUE
-             )
-           )
-    )
-  ),
-  br(),
+  # title option 2
+  #navbarPage(
+  #  title="VanArt: Discover Public Art in Vancouver!",
+  #  tabPanel("Component 1")),
   
-  # map and charts 
-  fluidRow(
-    column(8, leafletOutput("mainMap", height = "450px")
-    ),
-    column(4, 
-           tabsetPanel(
-             id = "tabset",
-             tabPanel("Year Installed", plotOutput("densityPlot")),
-             tabPanel("Art Type", plotOutput("treePlot")),
-             tabPanel("Neighbourhood", plotOutput("barPlot"))
-           )
-    )
-  ),
-  br(),
-  br(),
+  # title option 3
+  # fluidRow(
+  #   column(12, wellPanel(h2("VanArt"), h5("Discover Public Art in Vancouver!")))
+  # ),
   
-  # footnote 
-  fluidRow(
-    p("Made by Robin Dhillon, Shirley Zhang, Lisa Sequeira, and Hongjian Li (MDS-V 2022-23)", align = "center")
-  ),
+  # title option 4 
+  #wellPanel(
+    titlePanel(title = span(img(src = "van_logo.png", height = 70), 
+                            strong("VanArt"),
+                            "|",
+                            em("Discover Public Art in Vancouver!"), 
+                            style = "font-size:23px;")), 
+    #style = "padding: 2px;"), 
+  #br(), 
   
-  # adding scrollable popup scroll in leaflet render
-  tags$style(".popup-scroll {max-height: 300px; overflow-y: auto;}")
-
+  navbarPage("",
+    tabPanel("Dashboard",
+  
+      # select input row 
+      fluidRow(
+        column(4,
+               wellPanel(
+                 sliderInput(inputId='bins',
+                             label='Year Installed',
+                             min=1950,
+                             max=2022,
+                             value=c(1950, 2022),  # add two way slider
+                             sep = ""),  # removes comma in slider
+                 style = "padding: 8px;"
+                 )
+        ),
+        column(4,
+               wellPanel(
+                 # checkboxes for choosing art type 
+                 selectInput(
+                   'type', 'Art Type',
+                   choices = c("Select type(s) of art" = '',
+                               unique(data$Type)),
+                   selected = "All",
+                   multiple = TRUE)
+                 )
+        ),
+        column(4,
+               wellPanel(
+                 # checkboxes for choosing neighbourhood 
+                 selectInput(
+                   'neighbourhood', 'Neighbourhood',
+                   choices = c("Select neighbourhood(s)" = '',
+                               unique(data$Neighbourhood)),  
+                   selected = "All",
+                   multiple = TRUE
+                 )
+               )
+        )
+      ),
+      br(),
+      
+      # map and charts 
+      fluidRow(
+        column(8, leafletOutput("mainMap", height = "450px")
+        ),
+        column(4, 
+               tabsetPanel(
+                 id = "tabset",
+                 tabPanel("Year Installed", plotOutput("densityPlot")),
+                 tabPanel("Art Type", plotOutput("treePlot")),
+                 tabPanel("Neighbourhood", plotOutput("barPlot"))
+               )
+        )
+      ),
+      br(),
+      br(),
+      
+      # footnote 
+      # fluidRow(
+      #   p("Made by Robin Dhillon, Shirley Zhang, Lisa Sequeira, and Hongjian Li (MDS-V 2022-23)", align = "center")
+      # ),
+      
+      # adding scrollable popup scroll in leaflet render
+      tags$style(".popup-scroll {max-height: 300px; overflow-y: auto;}")),
+      
+  tabPanel("About",
+      p(h3(strong("Welcome!")),
+        "VanArt is a dashboard that lets you explore art installed around Vancouver.
+        With our dashboard, you can:",
+        br(),
+        br(),
+        tags$ul(
+          tags$li("Click around the map to find art in different locations"), 
+          tags$li("Filter by the year(s) art pieces were installed"), 
+          tags$li("Filter by the type of art you want to see"),
+          tags$li("Filter by the neighbourhood you want to explore")
+        ),
+        "We hope VanArt will enhance your Vancouver experience, whether you're 
+        a tourist visiting Vancouver for the first time or a local wishing to 
+        explore the city's public art scene!",
+        br(),
+        br(),
+        img(src='the_birds.jpg', align = "center", height = 400),
+        br(),
+        em('"The Birds" by Myfanwy MacLeod (Photo by Robert Keziere)'),
+        hr(),
+        h4(strong("Data")),
+        "The data used to create this app was accessed from the",
+        tags$a(href="https://opendata.vancouver.ca/explore/dataset/public-art/export/", 
+               "City of Vancouver Open Data Portal"),
+        hr(),
+        h4(strong("Attributions")),
+        "VanArt was created using the Shiny library for R:",
+        br(),
+        br(),
+        tags$blockquote("Chang W, Cheng J, Allaire J, Sievert C, Schloerke B, Xie Y, Allen J, 
+        McPherson J, Dipert A, Borges B (2023). shiny: Web Application Framework 
+        for R. R package version 1.7.4.9002, https://shiny.rstudio.com/.", 
+                        style = "font-size:13px;"),
+        "The City of Vancouver logo in the header is from:",
+        br(), br(),
+        tags$blockquote("https://vancouver.ca/news-calendar/city-symbols.aspx", 
+                        style = "font-size:13px;"),
+        hr(),
+        h4(strong("GitHub")),
+        "Please visit our GitHub for more information about our dashboard:", 
+        tags$a(href="https://github.com/UBC-MDS/VanArt", "UBC-MDS/VanArt"),
+        hr(),
+        h4(strong("Authors")),
+        "VanArt was made by Hongjian Li, Lisa Sequeira, Robin Dhillon, and Shirley Zhang, students in 
+        the Masters of Data Science program at the University of British Columbia.",
+        ))
+  )
 )
 
 server <- function(input, output, session){
