@@ -115,8 +115,10 @@ ui <- fluidPage(
       
   tabPanel("About",
       p(h3(strong("Welcome!")),
-        "VanArt is a dashboard that 
-        Public art is an important aspect of any city as it reflects the culture, 
+        "VanArt is a dashboard that lets you explore art installed around Vancouver.",
+        br(),
+        "",
+        "Public art is an important aspect of any city as it reflects the culture, 
         history, and values of a community. Vancouver is known for its vibrant and 
         diverse arts scene, and as a result, it has a plethora of public art installations 
         that locals and tourists can explore. However, apart from some well-known museums 
@@ -127,9 +129,8 @@ ui <- fluidPage(
         br(),
         br(),
         img(src='the_birds.jpg', align = "center", height = 400),
-        
         br(),
-        em("caption"),
+        em('"The Birds" by Myfanwy MacLeod (Photo by Robert Keziere)'),
         hr(),
         h4(strong("Data")),
         hr(),
@@ -138,7 +139,7 @@ ui <- fluidPage(
         hr(),
         h4(strong("GitHub")),
         "Please visit our GitHub for more information about our dashboard:", 
-        a(href="VanArt", "https://github.com/UBC-MDS/VanArt"),
+        tags$a(href="https://github.com/UBC-MDS/VanArt", "UBC-MDS/VanArt"),
         hr(),
         h4(strong("Authors")),
         "VanArt was made by Hongjian Li, Lisa Sequeira, Robin Dhillon, and Shirley Zhang, students in 
