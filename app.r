@@ -196,8 +196,16 @@ server <- function(input, output, session){
           filter(Neighbourhood %in% input$neighbourhood)
       }
       
+      # if filtered_data is empty
+      if (nrow(filtered_data) == 0) {
+        showNotification("No art found with selected filters!",
+                         type = "warning",
+                         duration = 30)
+      }
+      
       filtered_data  # original (if no inputs) or filtered data is returned
     })
+  
   
   # Create main geographical map
   output$mainMap <- renderLeaflet({
