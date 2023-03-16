@@ -33,6 +33,7 @@ ui <- fluidPage(
   
   # navbarPage
   navbarPage("",
+    id = 'navbar',
     tabPanel("Dashboard",
   
       # select input row 
