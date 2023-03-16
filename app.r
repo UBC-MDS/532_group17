@@ -24,29 +24,14 @@ ui <- fluidPage(
   # theme 
   theme = shinytheme("lumen"),
   
-  # title option 1
-  #navbarPage(title="VanArt: Discover Public Art in Vancouver!"),
-  
-  # title option 2
-  #navbarPage(
-  #  title="VanArt: Discover Public Art in Vancouver!",
-  #  tabPanel("Component 1")),
-  
-  # title option 3
-  # fluidRow(
-  #   column(12, wellPanel(h2("VanArt"), h5("Discover Public Art in Vancouver!")))
-  # ),
-  
-  # title option 4 
-  #wellPanel(
-    titlePanel(title = span(img(src = "van_logo.png", height = 70), 
+  # title
+  titlePanel(title = span(img(src = "van_logo.png", height = 70), 
                             strong("VanArt"),
                             "|",
                             em("Discover Public Art in Vancouver!"), 
-                            style = "font-size:23px;")), 
-    #style = "padding: 2px;"), 
-  #br(), 
+                            style = "font-size:23px;")),
   
+  # navbarPage
   navbarPage("",
     tabPanel("Dashboard",
   
@@ -102,18 +87,14 @@ ui <- fluidPage(
                )
         )
       ),
-      br(),
-      br(),
-      
-      # footnote 
-      # fluidRow(
-      #   p("Made by Robin Dhillon, Shirley Zhang, Lisa Sequeira, and Hongjian Li (MDS-V 2022-23)", align = "center")
-      # ),
-      
-      # adding scrollable popup scroll in leaflet render
-      tags$style(".popup-scroll {max-height: 300px; overflow-y: auto;}")),
-      
-  tabPanel("About",
+    br(),
+    br(),
+        
+    # adding scrollable popup scroll in leaflet render
+    tags$style(".popup-scroll {max-height: 300px; overflow-y: auto;}")),
+        
+    # about page
+    tabPanel("About",
       p(h3(strong("Welcome!")),
         "VanArt is a dashboard that lets you explore art installed around Vancouver.
         With our dashboard, you can:",
@@ -159,8 +140,9 @@ ui <- fluidPage(
         h4(strong("Authors")),
         "VanArt was made by Hongjian Li, Lisa Sequeira, Robin Dhillon, and Shirley Zhang, students in 
         the Masters of Data Science program at the University of British Columbia.",
-        ))
-  )
+        )
+      )
+    )
 )
 
 server <- function(input, output, session){
