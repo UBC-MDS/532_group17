@@ -28,7 +28,7 @@ ui <- fluidPage(
   titlePanel(title = span(img(src = "van_logo.png", height = 70), 
                             strong("VanArt"),
                             "|",
-                            em("Discover Public Art in Vancouver!"), 
+                            em("Discover Public Art in Vancouver! (hi)"), 
                             style = "font-size:23px;")),
   
   # navbarPage
