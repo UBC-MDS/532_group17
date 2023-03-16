@@ -198,9 +198,10 @@ server <- function(input, output, session){
       
       # if filtered_data is empty
       if (nrow(filtered_data) == 0) {
-        showNotification("No art found with selected filters!",
+        showNotification("No art found with selected filters! Showing all art!",
                          type = "warning",
                          duration = 30)
+        filtered_data <- data
       }
       
       filtered_data  # original (if no inputs) or filtered data is returned
