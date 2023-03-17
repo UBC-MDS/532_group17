@@ -196,16 +196,29 @@ server <- function(input, output, session){
           filter(Neighbourhood %in% input$neighbourhood)
       }
       
-      # if filtered_data is empty
-      if (nrow(filtered_data) == 0) {
-        showNotification("No art found with selected filters! Showing all art!",
-                         type = "warning",
-                         duration = 30)
-        filtered_data <- data
-      }
+      # # if filtered_data is empty
+      # if (nrow(filtered_data) == 0) {
+      #   showNotification("No art found with selected filters! Showing all art!",
+      #                    type = "warning",
+      #                    duration = 30)
+      #   filtered_data <- data
+      # }
+      
+      validate(
+        missing_values(filtered_data)
+        )
       
       filtered_data  # original (if no inputs) or filtered data is returned
     })
+  
+  missing_values <- function(input_data){
+    if (nrow(input_data) == 0){
+      "No art found with selected filters! Please select new filters!"
+    } else {
+      NULL
+    }
+  }
+  
   
   
   # Create main geographical map
@@ -213,7 +226,13 @@ server <- function(input, output, session){
     leaflet(reactive_data(),
             options = leafletOptions(
               attributionControl=FALSE)) |>
-      addTiles() |>  
+      addTiles(group = "Neighbourhood") |>  
+      addProviderTiles(providers$Esri.WorldImagery, group = "Satellite") |>
+      addProviderTiles(providers$CartoDB.VoyagerLabelsUnder, group = "Basemap") |> 
+      addLayersControl(
+        baseGroups = c("Basemap","Neighbourhood", "Satellite"),
+        options = layersControlOptions(collapsed = FALSE)
+      ) |> 
       addCircleMarkers(
         lat = ~latitude,
         lng = ~longitude,
