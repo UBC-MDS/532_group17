@@ -28,7 +28,7 @@ ui <- fluidPage(
   titlePanel(title = span(img(src = "van_logo.png", height = 70), 
                             strong("VanArt"),
                             "|",
-                            em("Discover Public Art in Vancouver! (hi)"), 
+                            em("Discover Public Art in Vancouver!"), 
                             style = "font-size:23px;")),
   
   # navbarPage
@@ -187,8 +187,20 @@ server <- function(input, output, session){
         filtered_data <- data
       }
       
+      # validate(
+      #   missing_values(filtered_data)
+      #   )
+      
       filtered_data  # original (if no inputs) or filtered data is returned
     })
+  
+  missing_values <- function(input_data){
+    if (nrow(input_data) == 0){
+      "No art found with selected filters! Please select new filters!"
+    } else {
+      NULL
+    }
+  }
   
   
   # Create main geographical map
@@ -196,7 +208,15 @@ server <- function(input, output, session){
     leaflet(reactive_data(),
             options = leafletOptions(
               attributionControl=FALSE)) |>
-      addTiles() |>  
+      addTiles(group = "Neighbourhood") |>  
+      addProviderTiles(providers$CartoDB.VoyagerLabelsUnder,
+                       group = "Basemap") |> 
+      addProviderTiles(providers$Esri.WorldImagery,
+                       group = "Satellite") |>
+      addLayersControl(
+        baseGroups = c("Basemap","Neighbourhood", "Satellite"),
+        options = layersControlOptions(collapsed = FALSE)
+      ) |> 
       addCircleMarkers(
         lat = ~latitude,
         lng = ~longitude,
