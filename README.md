@@ -1,5 +1,10 @@
 # VanArt
 
+<!-- badges: start -->
+[![App Deploys](https://github.com/UBC-MDS/VanArt/actions/workflows/deploy-app.yaml/badge.svg)](https://github.com/UBC-MDS/VanArt/actions/workflows/deploy-app.yaml)
+[![App Deploys](https://github.com/UBC-MDS/VanArt/actions/workflows/testing.yaml/badge.svg)](https://github.com/UBC-MDS/VanArt/actions/workflows/testing.yaml)
+<!-- badges: end -->
+
 Welcome to VanArt! Our mission is to help you explore public art in the city of Vancouver 
 
 🎨 Try out the app here: **[VanArt](https://shlrley.shinyapps.io/VanArt/)** 
