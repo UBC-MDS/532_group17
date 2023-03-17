@@ -31,7 +31,7 @@ Public art is an important aspect of any city as it reflects the culture, histor
 Our `VanArt` dashboard provides a comprehensive and interactive dashboard that allows tourists to easily find the public art they are interested in. By providing information on the location, year of installation, etc. our dashboard will not only help tourists find the public art they are looking for but also provide context and background on each installation. Additionally, `VanArt` can serve as a tool to promote public art and encourage people to explore Vancouver. Overall, `VanArt` has the potential to enhance the experience of tourists visiting Vancouver by providing them with a unique and enriching way to explore the city's public art. Although geared towards tourists, `VanArt` can be used by anyone interested in the Vancouver public art scene; locals who would like to explore their city’s public art are welcome to and encouraged to use `VanArt`.
 
 
-## Dashboard Overview
+## Dashboard description and overview
 
 ![VanArt Gif](vanart.gif)
 
@@ -50,29 +50,36 @@ Our application contains three different panels:
     to show the number of art pieces against the year installed, a tree plot to show the types of art, 
     and a bar chart to show the number of art pieces by different neighborhoods.
 
-## Data Used
+## Data Used (Reference)
 
 The data set we used to create this app is modified from [City of Vancouver Open Data Portal](https://opendata.vancouver.ca/explore/dataset/public-art/export/).
 
 Our modified data contains the feature about: the title of the artwork, the type of art (mural, statue, etc.), address of artwork, neighborhood where the work is located, latitude and longitude of the artwork, the photo URL, URL with artwork information, brief introduction to the artwork, and the year artwork was installed.
 
 
-## Run Locally
+## Installation and run locally
 
 To make this app run locally on your computer, please:
 
-1. Clone or fork this repository first
-2. Then, navigate to the top directory and run the command in the terminal below:
+1. Clone or fork this repository first to your local directory.
+2. Install the following packages required to run this app by inputting the following command in your R Console:
+````{bash}
+install.packages(c("shiny", "ggplot2", "leaflet", "tidyverse", "treemapify", "thematic", "shinythemes"))
+```
+3. After installing these packages, navigate to the top (root) directory of the repository and run the following command in the terminal:
 
 ```{bash}
 RScript app.R
 ```
+
+4. The address can be copied and pasted in the browser to run the dashboard. 
 
 ## Contributing
 
 Interested in contributing? You are welcome to make contributions on our VanArt App! We would love updated information regarding current art pieces, and information regarding art that we don't have in our database. Some updates include:
 -   The up-to-date data that contains the information of more art pieces and the art pieces after 2022
 -   The information of the artist of these public arts
+-   Images of the missing artworks.
 
 Also, please check out the [contributing](CONTRIBUTING.md) guidelines. Please note that this project is released with a [Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
 
@@ -89,3 +96,7 @@ Also, please check out the [contributing](CONTRIBUTING.md) guidelines. Please no
 - Hongjian Li
 
 This data science project is created for DSCI 532 (Data Visualization II); a course in the Master of Data Science program at the University of British Columbia.
+
+<a href="https://github.com/UBC-MDS/VanArt/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=UBC-MDS/VanArt&max=1000" />
+</a>
