@@ -28,7 +28,7 @@ Public art is an important aspect of any city as it reflects the culture, histor
 
 **The solution**
 
-Our `VanArt` dashboard provides a comprehensive and interactive dashboard that allows tourists to easily find the public art they are interested in. By providing information on the location, the artists, year of installation, etc. our dashboard will not only help tourists find the public art they are looking for but also provide context and background on each installation. Additionally, `VanArt` can serve as a tool to promote public art and encourage people to explore Vancouver. Overall, `VanArt` has the potential to enhance the experience of tourists visiting Vancouver by providing them with a unique and enriching way to explore the city's public art. Although geared towards tourists, `VanArt` can be used by anyone interested in the Vancouver public art scene; locals who would like to explore their city’s public art are welcome to and encouraged to use `VanArt`.
+Our `VanArt` dashboard provides a comprehensive and interactive dashboard that allows tourists to easily find the public art they are interested in. By providing information on the location, year of installation, etc. our dashboard will not only help tourists find the public art they are looking for but also provide context and background on each installation. Additionally, `VanArt` can serve as a tool to promote public art and encourage people to explore Vancouver. Overall, `VanArt` has the potential to enhance the experience of tourists visiting Vancouver by providing them with a unique and enriching way to explore the city's public art. Although geared towards tourists, `VanArt` can be used by anyone interested in the Vancouver public art scene; locals who would like to explore their city’s public art are welcome to and encouraged to use `VanArt`.
 
 
 ## Dashboard Overview
@@ -44,7 +44,7 @@ Our application contains three different panels:
     (without any user input) the map will display all the art pieces in Vancouver and the corresponding statistics, such as number of arts in each neighborhood, the number of arts for each art type, and more. The user can also 
     interact with the map directly. When selecting an icon of interest, a panel will appear providing 
     the user all the details about that particular public art piece (including the name of the work, 
-    an image of it, the artist name, its address and finally a website link with more information about the art).  
+    an image of it, its address and finally a website link with more information about the art).  
 -   `The statistics panel`: Shows the user some basic statistics to accompany the map, based on the 
     filtered criteria the user entered in the left most panel. This panel will include a bar chart 
     to show the number of art pieces against the year installed, a tree plot to show the types of art, 
