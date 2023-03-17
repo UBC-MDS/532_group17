@@ -28,7 +28,7 @@ ui <- fluidPage(
   titlePanel(title = span(img(src = "van_logo.png", height = 70), 
                             strong("VanArt"),
                             "|",
-                            em("Discover Public Art in Vancouver! (hi)"), 
+                            em("Discover Public Art in Vancouver!"), 
                             style = "font-size:23px;")),
   
   # navbarPage
@@ -179,17 +179,17 @@ server <- function(input, output, session){
           filter(Neighbourhood %in% input$neighbourhood)
       }
       
-      # # if filtered_data is empty
-      # if (nrow(filtered_data) == 0) {
-      #   showNotification("No art found with selected filters! Showing all art!",
-      #                    type = "warning",
-      #                    duration = 30)
-      #   filtered_data <- data
-      # }
+      # if filtered_data is empty
+      if (nrow(filtered_data) == 0) {
+        showNotification("No art found with selected filters! Showing all art!",
+                         type = "warning",
+                         duration = 30)
+        filtered_data <- data
+      }
       
-      validate(
-        missing_values(filtered_data)
-        )
+      # validate(
+      #   missing_values(filtered_data)
+      #   )
       
       filtered_data  # original (if no inputs) or filtered data is returned
     })
@@ -203,15 +203,16 @@ server <- function(input, output, session){
   }
   
   
-  
   # Create main geographical map
   output$mainMap <- renderLeaflet({
     leaflet(reactive_data(),
             options = leafletOptions(
               attributionControl=FALSE)) |>
       addTiles(group = "Neighbourhood") |>  
-      addProviderTiles(providers$Esri.WorldImagery, group = "Satellite") |>
-      addProviderTiles(providers$CartoDB.VoyagerLabelsUnder, group = "Basemap") |> 
+      addProviderTiles(providers$CartoDB.VoyagerLabelsUnder,
+                       group = "Basemap") |> 
+      addProviderTiles(providers$Esri.WorldImagery,
+                       group = "Satellite") |>
       addLayersControl(
         baseGroups = c("Basemap","Neighbourhood", "Satellite"),
         options = layersControlOptions(collapsed = FALSE)
