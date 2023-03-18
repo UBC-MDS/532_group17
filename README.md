@@ -90,6 +90,8 @@ Also, please check out the [contributing](CONTRIBUTING.md) guidelines. Please no
 
 ## Authors:
 
+This data science project is created for DSCI 532 (Data Visualization II); a course in the Master of Data Science program at the University of British Columbia.
+
 - Robin Dhillon
 - Shirley Zhang
 - Lisa Sequeira 
@@ -98,5 +100,3 @@ Also, please check out the [contributing](CONTRIBUTING.md) guidelines. Please no
 <a href="https://github.com/UBC-MDS/VanArt/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=UBC-MDS/VanArt&max=1000" />
 </a>
-
-This data science project is created for DSCI 532 (Data Visualization II); a course in the Master of Data Science program at the University of British Columbia.
