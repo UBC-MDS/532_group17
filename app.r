@@ -28,6 +28,8 @@ ui <- fluidPage(
   # theme 
   theme = bslib::bs_theme(bootswatch = "cerulean"),
   
+  tags$title('This is my page'),
+  
   # title
   titlePanel(title = span(img(src = "van_logo.png", height = 70), 
                             strong("VanArt"),
