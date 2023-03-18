@@ -1,0 +1,348 @@
+{
+  "input": {
+    "bins": [
+      1950,
+      2022
+    ],
+    "mainMap_bounds": {
+      "north": 49.2787806251841,
+      "east": -123.083009719849,
+      "south": 49.2535768206239,
+      "west": -123.149013519287
+    },
+    "mainMap_center": {
+      "lng": -123.115978,
+      "lat": 49.2661524140331
+    },
+    "mainMap_groups": "Basemap",
+    "mainMap_zoom": 14,
+    "navbar": "Dashboard",
+    "neighbourhood": "Fairview",
+    "tabset": "Year Installed",
+    "type": null
+  },
+  "output": {
+    "densityPlot": {
+      "src": "[image data hash: d44d5ec97d0bee96da4db92da2a5ece2]",
+      "width": 373,
+      "height": 400,
+      "alt": "Plot object",
+      "coordmap": {
+        "panels": [
+          {
+            "panel": 1,
+            "row": 1,
+            "col": 1,
+            "panel_vars": {
+
+            },
+            "log": {
+              "x": null,
+              "y": null
+            },
+            "domain": {
+              "left": 0.4,
+              "right": 13.6,
+              "bottom": -0.1,
+              "top": 2.1,
+              "discrete_limits": {
+                "x": [
+                  "1965",
+                  "1975",
+                  "1980",
+                  "1982",
+                  "1986",
+                  "1999",
+                  "2000",
+                  "2008",
+                  "2010",
+                  "2012",
+                  "2016",
+                  "2017",
+                  "2018"
+                ]
+              }
+            },
+            "mapping": {
+              "y": null,
+              "x": "YearOfInstallation"
+            },
+            "range": {
+              "left": 35.3694349315069,
+              "right": 367.520547945205,
+              "bottom": 368.846473150198,
+              "top": 23.9712263844706
+            }
+          }
+        ],
+        "dims": {
+          "width": 373,
+          "height": 400
+        }
+      }
+    },
+    "mainMap": {
+      "x": {
+        "options": {
+          "crs": {
+            "crsClass": "L.CRS.EPSG3857",
+            "code": null,
+            "proj4def": null,
+            "projectedBounds": null,
+            "options": {
+
+            }
+          },
+          "attributionControl": false
+        },
+        "calls": [
+          {
+            "method": "addTiles",
+            "args": [
+              "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+              null,
+              "Neighbourhood",
+              {
+                "minZoom": 0,
+                "maxZoom": 18,
+                "tileSize": 256,
+                "subdomains": "abc",
+                "errorTileUrl": "",
+                "tms": false,
+                "noWrap": false,
+                "zoomOffset": 0,
+                "zoomReverse": false,
+                "opacity": 1,
+                "zIndex": 1,
+                "detectRetina": false,
+                "attribution": "&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"
+              }
+            ]
+          },
+          {
+            "method": "addProviderTiles",
+            "args": [
+              "CartoDB.VoyagerLabelsUnder",
+              null,
+              "Basemap",
+              {
+                "errorTileUrl": "",
+                "noWrap": false,
+                "detectRetina": false
+              }
+            ]
+          },
+          {
+            "method": "addProviderTiles",
+            "args": [
+              "Esri.WorldImagery",
+              null,
+              "Satellite",
+              {
+                "errorTileUrl": "",
+                "noWrap": false,
+                "detectRetina": false
+              }
+            ]
+          },
+          {
+            "method": "addLayersControl",
+            "args": [
+              [
+                "Basemap",
+                "Neighbourhood",
+                "Satellite"
+              ],
+              [
+
+              ],
+              {
+                "collapsed": false,
+                "autoZIndex": true,
+                "position": "topright"
+              }
+            ]
+          },
+          {
+            "method": "addCircleMarkers",
+            "args": [
+              [
+                49.261911,
+                49.25976,
+                49.260248,
+                49.268961,
+                49.260111,
+                49.261523,
+                49.260162,
+                49.270469,
+                49.269881,
+                49.271127,
+                49.272544,
+                49.267592,
+                49.268934,
+                49.262779,
+                49.266071,
+                49.26994
+              ],
+              [
+                -123.138913,
+                -123.141344,
+                -123.122348,
+                -123.1349,
+                -123.122523,
+                -123.123566,
+                -123.114618,
+                -123.135911,
+                -123.135749,
+                -123.133831,
+                -123.114779,
+                -123.138963,
+                -123.134231,
+                -123.090612,
+                -123.115347,
+                -123.105572
+              ],
+              5,
+              null,
+              null,
+              {
+                "interactive": true,
+                "className": "",
+                "stroke": true,
+                "color": "darkblue",
+                "weight": 5,
+                "opacity": 0.5,
+                "fill": true,
+                "fillColor": "darkblue",
+                "fillOpacity": 0.2
+              },
+              {
+                "showCoverageOnHover": true,
+                "zoomToBoundsOnClick": true,
+                "spiderfyOnMaxZoom": true,
+                "removeOutsideVisibleBounds": true,
+                "spiderLegPolylineOptions": {
+                  "weight": 1.5,
+                  "color": "#222",
+                  "opacity": 0.5
+                },
+                "freezeAtZoom": false
+              },
+              null,
+              [
+                "<b>Title of work<\/b>:  Nature's Own Geometry <br> <b>Type of art<\/b>:  Relief <br> <b>Description<\/b>:  The copper bas-relief with abstract design and texture that hangs above the doors as well as the enameled entrance doors themselves are done by the artists. <br> <br> <b>Address<\/b>:  2695 Granville Street <br> <b>Year installed<\/b>:  1965 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/cf0288e414c0baf0faa7f556832d4894 ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Wind Blown Mounds <br> <b>Type of art<\/b>:  Sculpture <br> <b>Description<\/b>:  NA <br> <br> <b>Address<\/b>:  1616 West 13th Avenue (at Fir) <br> <b>Year installed<\/b>:  1975 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/c35f0715ceccccc9ba03523235e1b64b ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  BC Nurses Memorial - \"When Humans Bleed\" <br> <b>Type of art<\/b>:  Sculpture <br> <b>Description<\/b>:  NA <br> <br> <b>Address<\/b>:  899 West 12th Avenue <br> <b>Year installed<\/b>:  1999 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/58cc21d9b49b32590aaf61797110370c ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  False Creek Totem <br> <b>Type of art<\/b>:  Sculpture <br> <b>Description<\/b>:  This tall carved pole has a kayak passing through its centre. <br> <br> <b>Address<\/b>:  False Creek <br> <b>Year installed<\/b>:  1999 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/ad5456be9528c569fcc325fd50898628 ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  VGH Energy Centre <br> <b>Type of art<\/b>:  Site-integrated work <br> <b>Description<\/b>:  An interactive and integrally functional work that humanizes and animates the 45 or so intake, vent, steam and exhaust stacks rising out of the giant boiler plant below ground level. A somewhat parabolic stainless steel spiral pipe descends from the 3/4 point of one of the main stacks, down and across the site, ending over a vortex/whirlpool in the pool. The last 20 metres of the spiral rains cooling water into the pool, recycling it from, and back, into the plant itself. A number of the concrete pavers in the plaza are in fact pressure sensitive, that also cause the playful release of some of the excess steam from various vents of the system. <br> <br> <b>Address<\/b>:  12th Avenue at Willow Street <br> <b>Year installed<\/b>:  2008 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/10d20926dc6b1e76e9db82be94e1b30b ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Colour Seekers, The Colour Collector's Way <br> <b>Type of art<\/b>:  Mural <br> <b>Description<\/b>:  NA <br> <br> <b>Address<\/b>:  803 West 12th Avenue <br> <b>Year installed<\/b>:  2018 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/ea3d2635feeb8055928b9e990f6611fa ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Pattern Reflection <br> <b>Type of art<\/b>:  Site-integrated work <br> <b>Description<\/b>:  Two black granite columns with a modernist carved pattern and a modernist inspired black granite sculpture. <br> <br> <b>Address<\/b>:  2806 Cambie Street, <br> <b>Year installed<\/b>:  2017 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/7c0e469c1f3a1119e1854c0936753f35 ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Blanketing The City: A Mural Series <br> <b>Type of art<\/b>:  Mural <br> <b>Description<\/b>:  NA <br> <br> <b>Address<\/b>:  NA <br> <b>Year installed<\/b>:  2018 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/e4c17ec2f4ee2cb369a0d00eb3c632f3 ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Memorial to Barbara Dalrymple and John Rockingham <br> <b>Type of art<\/b>:  Memorial or monument <br> <b>Description<\/b>:  A memorial garden. <br> <br> <b>Address<\/b>:  NA <br> <b>Year installed<\/b>:  2000 <br> <b>Photo:<\/b><br><img src=' NA ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Surface <br> <b>Type of art<\/b>:  Media work <br> <b>Description<\/b>:  Surface is a live documentary of the underwater life of False Creek, transmitted from a camera mounted under an aquabus (a small commuter ferry). The submerged camera feeds streaming video 24 hours/day directly to www.surfacer.ca and to a TV monitor mounted inside the boat, which people can watch while riding the ferry. The live footage can also be seen on screens at various locations on Granville Island. \r\n\r\nThe live stream functions as an abstract mix of colours and impressions, until crustaceans or fish swim by. After dusk, Surface takes on a more intimate world, when tiny crustaceans, larval animals and eels can be seen. During the term of its installation, Vancouver artist Fiona Bowie hopes to track the health of False Creek’s marine life as evidence of our collective footprint. <br> <br> <b>Address<\/b>:  NA <br> <b>Year installed<\/b>:  2010 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/527d939570a345df7952ef7732cd5b45 ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  A False Creek <br> <b>Type of art<\/b>:  Site-integrated work <br> <b>Description<\/b>:  Painted chromatic blue stripes, applied to ten Cambie bridge pilings and fifteen lampposts along seawall. The stripe pattern starts at ground level, and runs up each piling and lamppost to a point that is five meters above sea level. <br> <br> <b>Address<\/b>:  NA <br> <b>Year installed<\/b>:  2012 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/e8fc5ce9b8d66df18fdc1791c28df82e ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Untitled (100) <br> <b>Type of art<\/b>:  Sculpture <br> <b>Description<\/b>:  This 7' high stone 100 was made to celebrate the centennial of the city. <br> <br> <b>Address<\/b>:  Granville Street at 4th Avenue <br> <b>Year installed<\/b>:  1986 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/0f4880f80d56872ccfc11cb924672bf8 ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Pressure Group 6 <br> <b>Type of art<\/b>:  Sculpture <br> <b>Description<\/b>:  NA <br> <br> <b>Address<\/b>:  Granville Island <br> <b>Year installed<\/b>:  1982 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/872e91115a5936ba8da0b7fc3af87096 ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Untitled <br> <b>Type of art<\/b>:  Fountain or water feature <br> <b>Description<\/b>:  NA <br> <br> <b>Address<\/b>:  601 West Broadway <br> <b>Year installed<\/b>:  1980 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/20fce3c455dfc0e576186738a29bef6d ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Centennial Rocket <br> <b>Type of art<\/b>:  Sculpture <br> <b>Description<\/b>:  A 12-foot-long stylized rocket ship made of bronze and stainless steel sits on top of an 11-foot-high stainless steel base. The design of the rocket ship looks like a 1950s Hollywood movie space ship. The design was originally created in 1936 for the Sheet Metal Workers Local 280 float for the Pacific National Exhibition Jubilee Parade on the occasion of the City of Vancouver's 50th birthday. It was designed by Lew Parry and made into a sculpture, built by Neon Products, which was sited at the first Vancouver Air Terminal from 1939 to 1972 when it was scrapped because of rust. In 1985 the Vancouver Transportation Club and the Sheet Metal Workers Union 280 decided to build a replica to celebrate Vancouver's 100th birthday. They located Lew Parry and he still had the original plans. This time the rocketship was built from more durable materials by Terminal Sheet Metal and the Local 280 metal workers. The Rocket was exhibited at Expo 86 and then donated to the city. It was moved by helicopter to it's current site. A Centennial Time Capsule is housed in the base of the rocket, scheduled to be opened 50 years from 1986. It includes items such as an Expo 86 passport with stamps of all the pavilions and recorded messages from local celebrities and many other things.\r\nThe City accepted the Centennial Rocket and a site was found for it in the small plaza at the SW end of the Cambie Street bridge.  -information from the website of SMW280 <br> <br> <b>Address<\/b>:  Cambie Street <br> <b>Year installed<\/b>:  1986 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/328ce7beb3b0e91b2e4b2f7b43444daf ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Refined <br> <b>Type of art<\/b>:  Sculpture <br> <b>Description<\/b>:  Southeast False Creek, the site of this work, was once a\r\nhub of industry and processing, but has rapidly been\r\nconverted from a quasi-abandoned and contaminated\r\nbrownfield into a highly-designed, dense residential\r\nneighbourhood. The word refined refers to both the\r\nprocess of removing unwanted elements to create an\r\nincreasingly homogeneous and pure substance and also to\r\nthe perception of characteristics such as elegance,\r\nsophistication, and urbanity. The artwork, Refined, draws\r\nspecifically on the forms and processes of salt purification\r\nwhich used to take place in the building immediately\r\nproximal to the site while exploring the overall\r\ntransformation of the neighbourhood itself.\r\nThe artwork is composed of five pure-white, conical\r\nsculptures of varying heights that sit within a recessed pool\r\nof recycled glass. During the day, the pure geometric forms\r\nand angular shapes of the surrounding glass elements\r\ncatch and play with natural sunlight. At night, warm hued\r\nlights, evocative of the colour of salt in its raw unrefined\r\nstate, cast a glow onto the artwork surfaces. <br> <br> <b>Address<\/b>:  1 - 88 West 1st Avenue <br> <b>Year installed<\/b>:  2016 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/de666fd624c954590b52fee9f9a94e42 ' style='max-width:200px; max-height:200px;'><br>"
+              ],
+              {
+                "maxWidth": 300,
+                "minWidth": 50,
+                "autoPan": true,
+                "keepInView": false,
+                "closeButton": true,
+                "className": "popup-scroll"
+              },
+              null,
+              {
+                "interactive": false,
+                "permanent": false,
+                "direction": "auto",
+                "opacity": 1,
+                "offset": [
+                  0,
+                  0
+                ],
+                "textsize": "10px",
+                "textOnly": false,
+                "className": "",
+                "sticky": true
+              },
+              null
+            ]
+          }
+        ],
+        "limits": {
+          "lat": [
+            49.25976,
+            49.272544
+          ],
+          "lng": [
+            -123.141344,
+            -123.090612
+          ]
+        }
+      },
+      "evals": [
+
+      ],
+      "jsHooks": [
+
+      ],
+      "deps": [
+        {
+          "name": "leaflet-providers",
+          "version": "1.9.0",
+          "src": {
+            "href": "leaflet-providers-1.9.0"
+          },
+          "meta": null,
+          "script": "leaflet-providers_1.9.0.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "package": null,
+          "all_files": false
+        },
+        {
+          "name": "leaflet-providers-plugin",
+          "version": "2.1.1",
+          "src": {
+            "href": "leaflet-providers-plugin-2.1.1"
+          },
+          "meta": null,
+          "script": "leaflet-providers-plugin.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        },
+        {
+          "name": "leaflet-markercluster",
+          "version": "1.0.5",
+          "src": {
+            "href": "leaflet-markercluster-1.0.5"
+          },
+          "meta": null,
+          "script": [
+            "leaflet.markercluster.js",
+            "leaflet.markercluster.freezable.js",
+            "leaflet.markercluster.layersupport.js"
+          ],
+          "stylesheet": [
+            "MarkerCluster.css",
+            "MarkerCluster.Default.css"
+          ],
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        }
+      ]
+    }
+  },
+  "export": {
+
+  }
+}
