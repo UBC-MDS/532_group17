@@ -28,17 +28,24 @@ ui <- fluidPage(
   # theme 
   theme = bslib::bs_theme(bootswatch = "cerulean"),
   
-  tags$title('This is my page'),
   
   # title
   titlePanel(title = span(img(src = "van_logo.png", height = 70), 
                             strong("VanArt"),
                             "|",
                             em("Discover Public Art in Vancouver!"), 
-                            style = "font-size:23px;")),
+                            style = "font-size:23px;"),
+             windowTitle = "VanArt"
+             ),
+  
+  # image on brower tab 
+  tags$head(
+    tags$link(rel = "icon", type = "image/png", sizes = "32x32", href = "/van_logo.png")),
+  
   # adding download button
   downloadButton("download", "Download Filtered Data", 
                  class = "btn-primary", style = "position: absolute; top: 10px; right: 10px;"),
+  
   # navbarPage
   navbarPage("",
     id = 'navbar',
