@@ -1,5 +1,4 @@
 library(shinytest2)
-library(diffviewer)
 
 test_that("{shinytest2} recording: Art_type_filter", {
   app <- AppDriver$new(name = "Art_type_filter", height = 714, width = 1235)
