@@ -64,7 +64,7 @@ To make this app run locally on your computer, please:
 1. Clone or fork this repository first to your local directory.
 2. Install the following packages required to run this app by inputting the following command in your R Console:
 ```{bash}
-install.packages(c("shiny", "ggplot2", "leaflet", "tidyverse", "treemapify", "thematic", "shinythemes"))
+install.packages(c("shiny", "ggplot2", "leaflet", "tidyverse", "treemapify", "thematic", "shinythemes", "shinycssloaders"))
 ```
 3. After installing these packages, navigate to the top (root) directory of the repository and run the following command in the terminal:
 

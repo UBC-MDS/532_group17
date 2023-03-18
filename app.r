@@ -5,6 +5,10 @@ library(tidyverse)
 library(treemapify)
 library(thematic)
 library(shinythemes)
+if(!require(shinycssloaders)){
+  install.packages("shinycssloaders")
+  library(shinycssloaders)
+}
 
 # read data
 data <- read_csv2("data/public-art.csv")
@@ -79,14 +83,21 @@ ui <- fluidPage(
       
       # map and charts 
       fluidRow(
-        column(8, leafletOutput("mainMap", height = "450px")
+        column(8, shinycssloaders::withSpinner(leafletOutput("mainMap",
+                                                             height = "450px"))
         ),
         column(4, 
                tabsetPanel(
                  id = "tabset",
-                 tabPanel("Year Installed", plotOutput("densityPlot")),
-                 tabPanel("Art Type", plotOutput("treePlot")),
-                 tabPanel("Neighbourhood", plotOutput("barPlot"))
+                 tabPanel("Year Installed",
+                          shinycssloaders::withSpinner(
+                            plotOutput("densityPlot"))),
+                 tabPanel("Art Type",
+                          shinycssloaders::withSpinner(
+                            plotOutput("treePlot"))),
+                 tabPanel("Neighbourhood",
+                          shinycssloaders::withSpinner(
+                            plotOutput("barPlot")))
                )
         )
       ),
