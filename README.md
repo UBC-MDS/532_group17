@@ -20,7 +20,7 @@ Welcome to VanArt! Our mission is to help you explore public art in the city of 
 - [Authors](#authors)
 
 
-## Introduction
+## Introduction and motivation
 
 **The problem**
 

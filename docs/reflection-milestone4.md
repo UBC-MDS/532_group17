@@ -16,6 +16,7 @@ Group Members:
 2. We accounted for the edge cases when there are no artworks depending on the user's inputs and thus, the whole world map would be displayed. Now when this happens, all the public art in Vancouver is displayed (like default case) and a notification is displayed (duration of 30s) which tells the user that no art exists for the current user input. 
 3. Added three different types of maps for the main leaflet map. The user can now toggle between a `Basemap`, a `Neighbourhood` map which shows the different neighbourhoods unlike `Basemap`, as well as a `Satellite` map which gives a satellite view. 
 4. Updated the README (added installation instructions, badges, and more) and proposal to reflect the most up-to-date dashboard.
+5. Although our dashboard responds very fast to user input, we also added spinners/progress bars to create a complete, production ready app.
 
 ### What are limitations of our dashboard? What is yet to be implemented?
 
@@ -33,3 +34,5 @@ Group Members:
 - Color scheme can be changed and title(s) of plots can be made larger. 
 
 ### Is there any feedback (or other insight) that you have found particularly valuable during your dashboard development?
+
+- Yes, the aforementioned edge case scenarios when there is no art depending on the user's inputs. 
