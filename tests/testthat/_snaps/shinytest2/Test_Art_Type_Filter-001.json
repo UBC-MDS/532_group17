@@ -1,0 +1,307 @@
+{
+  "input": {
+    "bins": [
+      1950,
+      2022
+    ],
+    "mainMap_bounds": {
+      "north": 49.3186323472924,
+      "east": -122.995376586914,
+      "south": 49.2178213589974,
+      "west": -123.259391784668
+    },
+    "mainMap_center": {
+      "lng": -123.1273335,
+      "lat": 49.2681715788509
+    },
+    "mainMap_groups": "Basemap",
+    "mainMap_zoom": 12,
+    "navbar": "Dashboard",
+    "neighbourhood": null,
+    "tabset": "Year Installed",
+    "type": "Figurative"
+  },
+  "output": {
+    "densityPlot": {
+      "src": "[image data hash: 94df6d4d551f50c3dfe070bd2438dc7d]",
+      "width": 373,
+      "height": 400,
+      "alt": "Plot object",
+      "coordmap": {
+        "panels": [
+          {
+            "panel": 1,
+            "row": 1,
+            "col": 1,
+            "panel_vars": {
+
+            },
+            "log": {
+              "x": null,
+              "y": null
+            },
+            "domain": {
+              "left": 1957.705,
+              "right": 1998.295,
+              "bottom": -0.1,
+              "top": 2.1
+            },
+            "mapping": {
+              "y": null,
+              "x": "YearOfInstallation"
+            },
+            "range": {
+              "left": 35.3694349315069,
+              "right": 367.520547945205,
+              "bottom": 368.846473150198,
+              "top": 23.9712263844706
+            }
+          }
+        ],
+        "dims": {
+          "width": 373,
+          "height": 400
+        }
+      }
+    },
+    "mainMap": {
+      "x": {
+        "options": {
+          "crs": {
+            "crsClass": "L.CRS.EPSG3857",
+            "code": null,
+            "proj4def": null,
+            "projectedBounds": null,
+            "options": {
+
+            }
+          },
+          "attributionControl": false
+        },
+        "calls": [
+          {
+            "method": "addTiles",
+            "args": [
+              "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+              null,
+              "Neighbourhood",
+              {
+                "minZoom": 0,
+                "maxZoom": 18,
+                "tileSize": 256,
+                "subdomains": "abc",
+                "errorTileUrl": "",
+                "tms": false,
+                "noWrap": false,
+                "zoomOffset": 0,
+                "zoomReverse": false,
+                "opacity": 1,
+                "zIndex": 1,
+                "detectRetina": false,
+                "attribution": "&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"
+              }
+            ]
+          },
+          {
+            "method": "addProviderTiles",
+            "args": [
+              "CartoDB.VoyagerLabelsUnder",
+              null,
+              "Basemap",
+              {
+                "errorTileUrl": "",
+                "noWrap": false,
+                "detectRetina": false
+              }
+            ]
+          },
+          {
+            "method": "addProviderTiles",
+            "args": [
+              "Esri.WorldImagery",
+              null,
+              "Satellite",
+              {
+                "errorTileUrl": "",
+                "noWrap": false,
+                "detectRetina": false
+              }
+            ]
+          },
+          {
+            "method": "addLayersControl",
+            "args": [
+              [
+                "Basemap",
+                "Neighbourhood",
+                "Satellite"
+              ],
+              [
+
+              ],
+              {
+                "collapsed": false,
+                "autoZIndex": true,
+                "position": "topright"
+              }
+            ]
+          },
+          {
+            "method": "addCircleMarkers",
+            "args": [
+              [
+                49.286828,
+                49.261439,
+                49.280592,
+                49.239145,
+                49.239068,
+                49.297258,
+                49.276564,
+                49.275936
+              ],
+              [
+                -123.1178,
+                -123.114522,
+                -123.124017,
+                -123.129578,
+                -123.134604,
+                -123.135223,
+                -123.11156,
+                -123.143107
+              ],
+              5,
+              null,
+              null,
+              {
+                "interactive": true,
+                "className": "",
+                "stroke": true,
+                "color": "darkblue",
+                "weight": 5,
+                "opacity": 0.5,
+                "fill": true,
+                "fillColor": "darkblue",
+                "fillOpacity": 0.2
+              },
+              {
+                "showCoverageOnHover": true,
+                "zoomToBoundsOnClick": true,
+                "spiderfyOnMaxZoom": true,
+                "removeOutsideVisibleBounds": true,
+                "spiderLegPolylineOptions": {
+                  "weight": 1.5,
+                  "color": "#222",
+                  "opacity": 0.5
+                },
+                "freezeAtZoom": false
+              },
+              null,
+              [
+                "<b>Title of work<\/b>:  Charles Bentall <br> <b>Type of art<\/b>:  Figurative <br> <b>Description<\/b>:  This classic bust depicts the entrepreneur Charles Bentall who died in 1974. <br> <br> <b>Address<\/b>:  501 Burrard Street <br> <b>Year installed<\/b>:  1977 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/474f32613a9576400ec109ba2736fcfd ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Lovers II <br> <b>Type of art<\/b>:  Figurative <br> <b>Description<\/b>:  NA <br> <br> <b>Address<\/b>:  453 West 12th Avenue at Cambie <br> <b>Year installed<\/b>:  1977 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/7fe528956a0df13b4878c2bd592915fa ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Themis, Goddess of Justice <br> <b>Type of art<\/b>:  Figurative <br> <b>Description<\/b>:  The Goddess of Justice represents justice in the mythical character of Diana, a woman of noble bearing in a flowing gown holding up the scales of justice. Though Diana traditionally held a sword in her other hand, the artist, who was against capital punishment, replaced the sword with a scroll. The sculpture is cast in bronze using the lost-wax method. <br> <br> <b>Address<\/b>:  800 Smithe Street, 4th floor <br> <b>Year installed<\/b>:  1982 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/9e3978f2101671a1a79c37a1ed33924d ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Fisher Hauling in the Net <br> <b>Type of art<\/b>:  Figurative <br> <b>Description<\/b>:  This fisherman, modeled in clay and then cast in bronze, stuggles to pull in a non-existing net heavy with imaginary fish from the pond beside which he is situated. <br> <br> <b>Address<\/b>:  5251 Oak Street <br> <b>Year installed<\/b>:  1976 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/5b4adb0ea17c41051c564298e0c52573 ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Three Botanists <br> <b>Type of art<\/b>:  Figurative <br> <b>Description<\/b>:  The three bronze busts of Carolus Linnaeus, Archibald Menzies, and David Douglas were a Gift of Schenley Canada Inc. <br> <br> <b>Address<\/b>:  5251 Oak Street <br> <b>Year installed<\/b>:  1987 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/0683e4b41eed0b1c40180b00e0d17744 ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Lord Stanley <br> <b>Type of art<\/b>:  Figurative <br> <b>Description<\/b>:  This memorial statue of Lord Stanley was erected to honour the dedication of Stanley Park. <br> <br> <b>Address<\/b>:  Stanley Park <br> <b>Year installed<\/b>:  1960 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/cf251f140dfc9988f3a00522641f8981 ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Percy Williams <br> <b>Type of art<\/b>:  Figurative <br> <b>Description<\/b>:  The sculpture depicts runner Percy Williams in starting position. It commemmorates Williams' winning of the 100 and 200 meter races at the Olympic Games in Amsterdam, 1928. The 5'6\", 130lb runner was born in Vancouver in 1908 and was 20 when he won the gold. His first victory was such a surprise that the medal ceremony was delayed while they looked for a Canadian flag. He is the only Canadian to win Olympic gold medals in track. He held the 100m world record from 1930-1940. After his career as a runner ended, he said he never liked running. he lived a quiet life out of the public limelight. He took his own life  in 1982. (Vancouver Sun, April 7, 2001, H7) <br> <br> <b>Address<\/b>:  777 Pacific Blvd <br> <b>Year installed<\/b>:  1996 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/16b0486885fa5e297d0d0e522223bc01 ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Major James Skitt Matthews (1878 - 1970) <br> <b>Type of art<\/b>:  Figurative <br> <b>Description<\/b>:  The bronze bust commemorates Major Matthews who was the first city archivist. It was donated to the city by Mrs. Teresa Galloway. <br> <br> <b>Address<\/b>:  1150 Chestnut Street <br> <b>Year installed<\/b>:  1986 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/219bb997bcec06fb55e61deee907f588 ' style='max-width:200px; max-height:200px;'><br>"
+              ],
+              {
+                "maxWidth": 300,
+                "minWidth": 50,
+                "autoPan": true,
+                "keepInView": false,
+                "closeButton": true,
+                "className": "popup-scroll"
+              },
+              null,
+              {
+                "interactive": false,
+                "permanent": false,
+                "direction": "auto",
+                "opacity": 1,
+                "offset": [
+                  0,
+                  0
+                ],
+                "textsize": "10px",
+                "textOnly": false,
+                "className": "",
+                "sticky": true
+              },
+              null
+            ]
+          }
+        ],
+        "limits": {
+          "lat": [
+            49.239068,
+            49.297258
+          ],
+          "lng": [
+            -123.143107,
+            -123.11156
+          ]
+        }
+      },
+      "evals": [
+
+      ],
+      "jsHooks": [
+
+      ],
+      "deps": [
+        {
+          "name": "leaflet-providers",
+          "version": "1.9.0",
+          "src": {
+            "href": "leaflet-providers-1.9.0"
+          },
+          "meta": null,
+          "script": "leaflet-providers_1.9.0.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "package": null,
+          "all_files": false
+        },
+        {
+          "name": "leaflet-providers-plugin",
+          "version": "2.1.1",
+          "src": {
+            "href": "leaflet-providers-plugin-2.1.1"
+          },
+          "meta": null,
+          "script": "leaflet-providers-plugin.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        },
+        {
+          "name": "leaflet-markercluster",
+          "version": "1.0.5",
+          "src": {
+            "href": "leaflet-markercluster-1.0.5"
+          },
+          "meta": null,
+          "script": [
+            "leaflet.markercluster.js",
+            "leaflet.markercluster.freezable.js",
+            "leaflet.markercluster.layersupport.js"
+          ],
+          "stylesheet": [
+            "MarkerCluster.css",
+            "MarkerCluster.Default.css"
+          ],
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        }
+      ]
+    }
+  },
+  "export": {
+
+  }
+}

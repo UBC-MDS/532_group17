@@ -18,12 +18,14 @@ Group Members:
 4. Updated the README (added installation instructions, badges, and more) and proposal to reflect the most up-to-date dashboard.
 5. Added a download button which could allow user to download the filtered data-set base on what they selected on our dashboard.
 6. Although our dashboard responds very fast to user input, we also added spinners/progress bars to create a complete, production ready app
+7. Updated theme and all applicable visualization with the color theme "cerulean".
 
 ### What are limitations of our dashboard? What is yet to be implemented?
 
 1. For some art pieces, there is no image available even when we have a link. Due to this, the image embedding in the popup doesn't show an image. Accounting for this has yet to be implemented as this has turned out to be quite difficult.
 2. At the beginning of milestone 4, we thought about including a choropleth map but that would require another dataset with boundaries of Vancouver neighbourhoods. Currently, we don't have that but it definitely could be implemented in the future. 
 3. If someone is interested in a particular art site, they might want to search the name directly but our dashboard doesn't support that feature for now and it can be implement in the future.
+4. We were also thinking about adding artists data and providing the user the opportunity to filter via artists. However, given the complexity of this data merger (multiple artists to a single art piece) and time constraints we were unable to make this update and hope to do so at the next iteration 
 
 ---
 
