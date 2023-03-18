@@ -31,7 +31,7 @@ ui <- fluidPage(
                             em("Discover Public Art in Vancouver!"), 
                             style = "font-size:23px;")),
   # adding download button
-  downloadButton("download", "Download Selected Data", 
+  downloadButton("download", "Download Filtered Data", 
                  class = "btn-primary", style = "position: absolute; top: 10px; right: 10px;"),
   # navbarPage
   navbarPage("",
