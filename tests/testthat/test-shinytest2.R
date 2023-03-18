@@ -1,16 +1,31 @@
 library(shinytest2)
 
-test_that("{shinytest2} recording: yearinstalled_default", {
-  app <- AppDriver$new(variant = platform_variant(), name = "yearinstalled_default", 
-      height = 808, width = 1067)
-  app$set_window_size(width = 581, height = 808)
-  app$set_window_size(width = 583, height = 808)
-  app$set_inputs(bins = c(1950, 2003))
-  app$set_inputs(bins = c(1950, 2022))
-  app$set_inputs(bins = c(1950, 2003))
-  app$set_inputs(bins = c(1950, 2022))
-  app$set_window_size(width = 855, height = 808)
+test_that("{shinytest2} recording: Art_type_filter", {
+  app <- AppDriver$new(name = "Art_type_filter", height = 714, width = 1235)
+  app$set_inputs(type = "Totem pole")
+  app$set_inputs(type = c("Totem pole", "Other"))
+  app$set_inputs(tabset = "Art Type")
   app$expect_values()
-  app$expect_screenshot()
 })
 
+
+test_that("{shinytest2} recording: Test_Neighbourhood_filter", {
+  app <- AppDriver$new(name = "Test_Neighbourhood_filter", height = 714, width = 1235)
+  app$set_inputs(neighbourhood = "Fairview")
+  app$set_inputs(tabset = "Neighbourhood")
+  app$expect_values()
+  app$set_inputs(tabset = "Art Type")
+  app$expect_values()
+  app$set_inputs(tabset = "Year Installed")
+  app$expect_values()
+})
+
+
+
+test_that("{shinytest2} recording: Test_default_view", {
+  app <- AppDriver$new(name = "Test_default_view", height = 714, width = 1235)
+  app$expect_values()
+  app$set_inputs(tabset = "Art Type")
+  app$set_inputs(tabset = "Neighbourhood")
+  app$set_inputs(tabset = "Year Installed")
+})

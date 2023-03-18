@@ -1,0 +1,388 @@
+{
+  "input": {
+    "bins": [
+      1950,
+      2022
+    ],
+    "mainMap_bounds": {
+      "north": 49.31258949637,
+      "east": -122.98885345459,
+      "south": 49.2117661486771,
+      "west": -123.252868652344
+    },
+    "mainMap_center": {
+      "lng": -123.1208095,
+      "lat": 49.2622244253125
+    },
+    "mainMap_groups": "Basemap",
+    "mainMap_zoom": 12,
+    "navbar": "Dashboard",
+    "neighbourhood": null,
+    "tabset": "Art Type",
+    "type": [
+      "Totem pole",
+      "Other"
+    ]
+  },
+  "output": {
+    "densityPlot": {
+      "src": "[image data hash: 01e5a869c8f4d6795f320a8270c1b5cc]",
+      "width": 373,
+      "height": 400,
+      "alt": "Plot object",
+      "coordmap": {
+        "panels": [
+          {
+            "panel": 1,
+            "row": 1,
+            "col": 1,
+            "panel_vars": {
+
+            },
+            "log": {
+              "x": null,
+              "y": null
+            },
+            "domain": {
+              "left": 1951.655,
+              "right": 2015.345,
+              "bottom": -0.1,
+              "top": 2.1
+            },
+            "mapping": {
+              "y": null,
+              "x": "YearOfInstallation"
+            },
+            "range": {
+              "left": 35.3694349315069,
+              "right": 367.520547945205,
+              "bottom": 368.846473150198,
+              "top": 23.9712263844706
+            }
+          }
+        ],
+        "dims": {
+          "width": 373,
+          "height": 400
+        }
+      }
+    },
+    "mainMap": {
+      "x": {
+        "options": {
+          "crs": {
+            "crsClass": "L.CRS.EPSG3857",
+            "code": null,
+            "proj4def": null,
+            "projectedBounds": null,
+            "options": {
+
+            }
+          },
+          "attributionControl": false
+        },
+        "calls": [
+          {
+            "method": "addTiles",
+            "args": [
+              "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+              null,
+              "Neighbourhood",
+              {
+                "minZoom": 0,
+                "maxZoom": 18,
+                "tileSize": 256,
+                "subdomains": "abc",
+                "errorTileUrl": "",
+                "tms": false,
+                "noWrap": false,
+                "zoomOffset": 0,
+                "zoomReverse": false,
+                "opacity": 1,
+                "zIndex": 1,
+                "detectRetina": false,
+                "attribution": "&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"
+              }
+            ]
+          },
+          {
+            "method": "addProviderTiles",
+            "args": [
+              "CartoDB.VoyagerLabelsUnder",
+              null,
+              "Basemap",
+              {
+                "errorTileUrl": "",
+                "noWrap": false,
+                "detectRetina": false
+              }
+            ]
+          },
+          {
+            "method": "addProviderTiles",
+            "args": [
+              "Esri.WorldImagery",
+              null,
+              "Satellite",
+              {
+                "errorTileUrl": "",
+                "noWrap": false,
+                "detectRetina": false
+              }
+            ]
+          },
+          {
+            "method": "addLayersControl",
+            "args": [
+              [
+                "Basemap",
+                "Neighbourhood",
+                "Satellite"
+              ],
+              [
+
+              ],
+              {
+                "collapsed": false,
+                "autoZIndex": true,
+                "position": "topright"
+              }
+            ]
+          },
+          {
+            "method": "addCircleMarkers",
+            "args": [
+              [
+                49.299245,
+                49.29924,
+                49.239068,
+                49.299207,
+                null,
+                null,
+                49.299161,
+                49.279305,
+                49.285291,
+                49.277533,
+                49.299188,
+                49.299283,
+                49.23847,
+                49.288027,
+                49.266551,
+                49.225138,
+                49.28238,
+                null,
+                49.281147
+              ],
+              [
+                -123.120851,
+                -123.120902,
+                -123.134604,
+                -123.120828,
+                null,
+                null,
+                -123.120781,
+                -123.120407,
+                -123.0978,
+                -123.1475,
+                -123.120776,
+                -123.120898,
+                -123.129426,
+                -123.113251,
+                -123.09901,
+                -123.107627,
+                -123.094119,
+                null,
+                -123.1062
+              ],
+              5,
+              null,
+              null,
+              {
+                "interactive": true,
+                "className": "",
+                "stroke": true,
+                "color": "darkblue",
+                "weight": 5,
+                "opacity": 0.5,
+                "fill": true,
+                "fillColor": "darkblue",
+                "fillOpacity": 0.2
+              },
+              {
+                "showCoverageOnHover": true,
+                "zoomToBoundsOnClick": true,
+                "spiderfyOnMaxZoom": true,
+                "removeOutsideVisibleBounds": true,
+                "spiderLegPolylineOptions": {
+                  "weight": 1.5,
+                  "color": "#222",
+                  "opacity": 0.5
+                },
+                "freezeAtZoom": false
+              },
+              null,
+              [
+                "<b>Title of work<\/b>:  Chief Wakas Pole <br> <b>Type of art<\/b>:  Totem pole <br> <b>Description<\/b>:  The Wa'kas pole is a replica of an Alert Bay pole done by Yuxwayu as a memorial to Chief Wakius (or Wa'kas). The original was a house pole erected in 1893 with a ceremonial entrance through the Raven's mouth. The pole depicts a legend of 3 sons of a Nimpkish chief who outwit a mythical cannibal-at-the-north-end-of-the-world who had been stealing members of the tribe. <br> <br> <b>Address<\/b>:  Stanley Park <br> <b>Year installed<\/b>:  1987 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/177544f929bb8b31a5fc347113fefa3a ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Beaver Crest Pole <br> <b>Type of art<\/b>:  Totem pole <br> <b>Description<\/b>:  The pole depicts the Tait family legend of the Eagle people and the Beaver crest.  The larger figure at the top holds two small figures which depict Tait's sons Robert and Isaac who helped carve the pole. (Stewart, Totem Poles, 1990) <br> <br> <b>Address<\/b>:  Stanley Park <br> <b>Year installed<\/b>:  1987 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/3b8bfff5f1d61dab258b22cebd2a8b63 ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Al of the Gispudwada (Black Bear Crest of the Killer Whale Tribe) <br> <b>Type of art<\/b>:  Totem pole <br> <b>Description<\/b>:  This Gitksan pole of red cedar was commissioned by the VanDusen Botanical Gardens Association. It incorporates the following figures and legend: human form at the top - a hunter who went into the mountains, was captured by a black bear, and assumed the bear form; human head in the top figure's stomach - a friendly villager who assisted \"Bear Man\" to resume his human form when everyone else abandoned him; the bear figure at bottom represents \"Bear Man\" before being turned back into human form; the human head in bear's stomach indicates that bear figure is \"Bear Man\" (from VanDusen Garden website) <br> <br> <b>Address<\/b>:  5251 Oak Street <br> <b>Year installed<\/b>:  1976 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/f5fec95d76c2daeeb9a0ef196a7b92c3 ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Kakaso'las <br> <b>Type of art<\/b>:  Totem pole <br> <b>Description<\/b>:  This is a Kwakwaka'wakw pole which shows an Eagle, a SeaBear, a woman holding a frog, Bookwus (the Wild Man of the woods) and Dzoonokwa and a Raven at the base. <br> <br> <b>Address<\/b>:  Stanley Park <br> <b>Year installed<\/b>:  1955 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/e2f5d50e998e8ff341283180f9ba231f ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Oscar Matilpi Pole <br> <b>Type of art<\/b>:  Totem pole <br> <b>Description<\/b>:  Kwakwaka'wakw artist Oscar Maltipi carved this pole in 1968. <br> <br> <b>Address<\/b>:  Stanley Park <br> <b>Year installed<\/b>:  1968 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/9be151bd7188d1665d0295244893467e ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Rose Cole Yelton Memorial Pole <br> <b>Type of art<\/b>:  Totem pole <br> <b>Description<\/b>:  This pole was raised in 2009 to honor Rose Cole Yelton, her family, and everyone who lived in Stanley Park. The pole is situated in front of the house site where the Cole family lived until 1935. <br> <br> <b>Address<\/b>:  Stanley Park <br> <b>Year installed<\/b>:  2009 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/26a5d3d610c351bb6b49cc04f21faf35 ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Chief Skedans Mortuary Pole <br> <b>Type of art<\/b>:  Totem pole <br> <b>Description<\/b>:  A replica of a Haida mortuary pole originally raised in Skedans prior to 1878 and moved to Vancouver in 1936 for Vancouver's golden jubilee. This version by Bill Reid was carved on the site in Stanley Park in 1964 with the help of Don Yeomans and German carver Werner True. At the top of the pole is the Moon with a Thunderbird face, the a mountain goat with cloven hooves and a Grizzly Bear at the bottom which holds a Seal. (Stewart, Totem Poles, 1990) <br> <br> <b>Address<\/b>:  Stanley Park <br> <b>Year installed<\/b>:  1964 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/90139c65d64a47d4722d9b6562bf539d ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Haida Eagle and Frog Totem Pole <br> <b>Type of art<\/b>:  Totem pole <br> <b>Description<\/b>:  The 8 foot pole is carved on all sides and features a large eagle holding a frog between its wings. A smaller eagle is on top. The piece was designed by Reid and carved in his studio in 1986-1987 by Tim Boyko, Bill Bellis, Don Yeomans, and Doug Zilkie. <br> <br> <b>Address<\/b>:  940 Seymour Street <br> <b>Year installed<\/b>:  2002 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/7ee711c74f61b3e22d725e41b1088e89 ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Nighthawk Aboriginal Arts & Music Festival <br> <b>Type of art<\/b>:  Other <br> <b>Description<\/b>:  A one-day event celebrating traditional and contemporary indigenous art. It was produced by the Downtown Eastside Centre for the Arts. <br> <br> <b>Address<\/b>:  149 East Waterfront Road <br> <b>Year installed<\/b>:  2010 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/c0695898340482a07c56f8e5ec77026c ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Centennial Pole (totem) <br> <b>Type of art<\/b>:  Totem pole <br> <b>Description<\/b>:  \"Each of the ten figures is the crest of one of the ten Kwakwaka'wakw clans representing the mythical ancestry of the clan. From the top down:: chief wearing high crowned hat and robe; Beaver; Old Man; Thunderbird and Sea Otter holding seal; Raven head down; whale with face for blowhole; woman crouching on head of Sisiutl; Halibut with human in its body; Cedar Man with head and neck rings.\" (From Totem Poles, Hilary Stewart, 1990, Douglas &amp; McIntyre) <br> <br> <b>Address<\/b>:  Odgen Street & Cypress Street <br> <b>Year installed<\/b>:  1958 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/de7031d7a62f163e1661715c96e696f6 ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Thunderbird House Post <br> <b>Type of art<\/b>:  Totem pole <br> <b>Description<\/b>:  The house post is carved of red cedar with a Thunderbird at the top, a Killer Whale on the chest, and a Grizzly Bear holding a human being at the bottom. The current pole is a replica of a pair carved by Charles James in the early 1900s and owned by Chief Tsa-wee-nok of Kingcome Inlet.  The top bird figure originally had wings. (from Totem Poles, Hilary Stewart, 1990) <br> <br> <b>Address<\/b>:  Stanley Park <br> <b>Year installed<\/b>:  1988 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/6a7b252cb5c3cb34ab7ac30cb8ba8c94 ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Sky Chief Pole <br> <b>Type of art<\/b>:  Totem pole <br> <b>Description<\/b>:  The pole represents the Nuu-chah-nulth people: from the top, Sky Chief, Moon, Kingfisher, Humpback Whale with Thunderbird on its back. Lightning Snake with the head of a wolf is on either side of the Whale, with Wolf below.  A man of knowledge is at the bottom. <br> <br> <b>Address<\/b>:  Stanley Park <br> <b>Year installed<\/b>:  1989 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/07168f87e6d889b7c45fe8831bc3beb8 ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  The Mosquito People <br> <b>Type of art<\/b>:  Totem pole <br> <b>Description<\/b>:  The Legend of the Mosquito People is of the Gitksan Tribe. The pole incorporates the following figures: Baboudina, Chief of the Mosquitoes; young woman with a baby; young husband. <br> <br> <b>Address<\/b>:  5251 Oak Street <br> <b>Year installed<\/b>:  1986 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/3fae4511edd16c51960382572e7d56e6 ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  The Totems <br> <b>Type of art<\/b>:  Totem pole <br> <b>Description<\/b>:  Current plaque text (12/2019):This pair of totems were carved by Art Sterritt, in the traditional Gitxsan style. The totem on the left features the crests of the Gispudwada (Killer Whale Clan) and depicts the killer whale, the octopus and the matriarch. The totem on the right contains crests of the Laxsgiik (Eagle Clan), including the beaver, the frog and the shark. Originally from Gitanmaax at Hazelton, BC, the totems were part of a collection commissioned by Sun Life of Canada, prior to their installation at the Museum of Vancouver and the Vancouver Convention Centre. <br> <br> <b>Address<\/b>:  999 Canada Place Way <br> <b>Year installed<\/b>:  1972 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/794bb19c9882ee7173401dac85a76b66 ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Wilp <br> <b>Type of art<\/b>:  Totem pole <br> <b>Description<\/b>:  Unpainted portal pole carved in Nishga (Tsimshian) style. The pole's name, Wilp, means \"where the people gather.\" Norman Tait's carving assistants were all family: brother, son, nephew, and cousin, and they are represented by the four faces around the entrance. Each man carved his own \"signature piece\"; though similar, all are different. Tait's signature piece is the little bear cub. <br> <br> <b>Address<\/b>:  285 East 5th Avenue <br> <b>Year installed<\/b>:  1985 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/ff43c08fe7a728e5608187b3a5e8fab3 ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Totem Pole (Langara College) <br> <b>Type of art<\/b>:  Totem pole <br> <b>Description<\/b>:  Culture Style: Haida <br> <br> <b>Address<\/b>:  100 West 49th Avenue <br> <b>Year installed<\/b>:  1990 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/1ba12b546a6bac63bd97634d537cd70b ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Oppenheimer Memorial Totem Pole <br> <b>Type of art<\/b>:  Totem pole <br> <b>Description<\/b>:  The totem was carved using traditional techniques taught by a master carver. The pole was created in memory of \"lives that otherwise may have gone unrecorded.\" - The Art of Neighbourhoods,  Park Board Brochure <br> <br> <b>Address<\/b>:  Powell and Cordova, Dunlevy and Jackson <br> <b>Year installed<\/b>:  1997 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/da0721c7511ba01a5e5e783c28ed7c10 ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Ga'akstalas <br> <b>Type of art<\/b>:  Totem pole <br> <b>Description<\/b>:  Ga'akstalas, carved by Wayne Alfred and Beau Dick in 1991, is based on a design by Russell Smith. <br> <br> <b>Address<\/b>:  Stanley Park <br> <b>Year installed<\/b>:  1991 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/be69d0007e275de4650cb938906ab909 ' style='max-width:200px; max-height:200px;'><br>",
+                "<b>Title of work<\/b>:  Dreamweaver <br> <b>Type of art<\/b>:  Totem pole <br> <b>Description<\/b>:  Crowning the roof of Skwach&agrave;ys Lodge is a longhouse with a laser-etched stainless steel panel and a 40-foot totem pole. <br> <br> <b>Address<\/b>:  31 West Pender Street <br> <b>Year installed<\/b>:  2012 <br> <b>Photo:<\/b><br><img src=' https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/public-art/files/e7e40d20f684112fd6a24c54069aa38d ' style='max-width:200px; max-height:200px;'><br>"
+              ],
+              {
+                "maxWidth": 300,
+                "minWidth": 50,
+                "autoPan": true,
+                "keepInView": false,
+                "closeButton": true,
+                "className": "popup-scroll"
+              },
+              null,
+              {
+                "interactive": false,
+                "permanent": false,
+                "direction": "auto",
+                "opacity": 1,
+                "offset": [
+                  0,
+                  0
+                ],
+                "textsize": "10px",
+                "textOnly": false,
+                "className": "",
+                "sticky": true
+              },
+              null
+            ]
+          }
+        ],
+        "limits": {
+          "lat": [
+            49.225138,
+            49.299283
+          ],
+          "lng": [
+            -123.1475,
+            -123.094119
+          ]
+        }
+      },
+      "evals": [
+
+      ],
+      "jsHooks": [
+
+      ],
+      "deps": [
+        {
+          "name": "leaflet-providers",
+          "version": "1.9.0",
+          "src": {
+            "href": "leaflet-providers-1.9.0"
+          },
+          "meta": null,
+          "script": "leaflet-providers_1.9.0.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "package": null,
+          "all_files": false
+        },
+        {
+          "name": "leaflet-providers-plugin",
+          "version": "2.1.1",
+          "src": {
+            "href": "leaflet-providers-plugin-2.1.1"
+          },
+          "meta": null,
+          "script": "leaflet-providers-plugin.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        },
+        {
+          "name": "leaflet-markercluster",
+          "version": "1.0.5",
+          "src": {
+            "href": "leaflet-markercluster-1.0.5"
+          },
+          "meta": null,
+          "script": [
+            "leaflet.markercluster.js",
+            "leaflet.markercluster.freezable.js",
+            "leaflet.markercluster.layersupport.js"
+          ],
+          "stylesheet": [
+            "MarkerCluster.css",
+            "MarkerCluster.Default.css"
+          ],
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        }
+      ]
+    },
+    "treePlot": {
+      "src": "[image data hash: db7ae9957616b492b73fb073ae5136da]",
+      "width": 373,
+      "height": 400,
+      "alt": "Plot object",
+      "coordmap": {
+        "panels": [
+          {
+            "panel": 1,
+            "row": 1,
+            "col": 1,
+            "panel_vars": {
+
+            },
+            "log": {
+              "x": null,
+              "y": null
+            },
+            "domain": {
+              "left": -0.05,
+              "right": 1.05,
+              "bottom": -0.05,
+              "top": 1.05
+            },
+            "mapping": {
+              "x": null,
+              "y": null,
+              "area": "type_num",
+              "fill": "Type",
+              "label": "type_num"
+            },
+            "range": {
+              "left": 5.47945205479452,
+              "right": 279.843287671233,
+              "bottom": 394.520547945206,
+              "top": 23.9712263844706
+            }
+          }
+        ],
+        "dims": {
+          "width": 373,
+          "height": 400
+        }
+      }
+    }
+  },
+  "export": {
+
+  }
+}
