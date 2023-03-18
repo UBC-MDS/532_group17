@@ -38,3 +38,5 @@ Group Members:
 - Color scheme can be changed and title(s) of plots can be made larger. 
 
 ### Is there any feedback (or other insight) that you have found particularly valuable during your dashboard development?
+
+- Yes, the aforementioned edge case scenarios when there is no art depending on the user's inputs. 

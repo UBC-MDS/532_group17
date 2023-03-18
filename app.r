@@ -5,6 +5,10 @@ library(tidyverse)
 library(treemapify)
 library(thematic)
 library(shinythemes)
+if(!require(shinycssloaders)){
+  install.packages("shinycssloaders")
+  library(shinycssloaders)
+}
 
 # read data
 data <- read_csv2("data/public-art.csv")
@@ -30,7 +34,9 @@ ui <- fluidPage(
                             "|",
                             em("Discover Public Art in Vancouver!"), 
                             style = "font-size:23px;")),
-  
+  # adding download button
+  downloadButton("download", "Download Filtered Data", 
+                 class = "btn-primary", style = "position: absolute; top: 10px; right: 10px;"),
   # navbarPage
   navbarPage("",
     id = 'navbar',
@@ -77,14 +83,21 @@ ui <- fluidPage(
       
       # map and charts 
       fluidRow(
-        column(8, leafletOutput("mainMap", height = "450px")
+        column(8, shinycssloaders::withSpinner(leafletOutput("mainMap",
+                                                             height = "450px"))
         ),
         column(4, 
                tabsetPanel(
                  id = "tabset",
-                 tabPanel("Year Installed", plotOutput("densityPlot")),
-                 tabPanel("Art Type", plotOutput("treePlot")),
-                 tabPanel("Neighbourhood", plotOutput("barPlot"))
+                 tabPanel("Year Installed",
+                          shinycssloaders::withSpinner(
+                            plotOutput("densityPlot"))),
+                 tabPanel("Art Type",
+                          shinycssloaders::withSpinner(
+                            plotOutput("treePlot"))),
+                 tabPanel("Neighbourhood",
+                          shinycssloaders::withSpinner(
+                            plotOutput("barPlot")))
                )
         )
       ),
@@ -93,7 +106,8 @@ ui <- fluidPage(
         
     # adding scrollable popup scroll in leaflet render
     tags$style(".popup-scroll {max-height: 300px; overflow-y: auto;}")),
-        
+    
+    
     # about page
     tabPanel("About",
       p(h3(strong("Welcome!")),
@@ -246,13 +260,22 @@ server <- function(input, output, session){
   # Create line plot 
   output$densityPlot <- renderPlot({
     reactive_data() |>
+      #convert the continues data type into descrete
+      mutate(YearOfInstallation = format(as.Date(paste0(YearOfInstallation, "-01-01")), "%Y"))|>
       ggplot(aes(x=YearOfInstallation)) +
       geom_bar(stat="count", color = "white", fill = "#339acc") +
       labs(
         x = "Year of Installation",
         y = "Number of Art Pieces"
       ) +
-      ggtitle("Number of Art Pieces Installed Over Time")
+      ggtitle("Number of Art Pieces Installed Over Time")+
+      #make sure the scale of x-axis is always readable
+      scale_x_discrete(breaks = c(min(reactive_data()$YearOfInstallation),
+                                  seq(min(reactive_data()$YearOfInstallation), 
+                                      max(reactive_data()$YearOfInstallation), by = 7),
+                                  max(reactive_data()$YearOfInstallation))
+      )
+       
   })   
   
   
@@ -288,6 +311,20 @@ server <- function(input, output, session){
       scale_fill_brewer(palette = "Blues") +
       labs(title = "Number of Art Pieces by Type")
   })
+  
+  # function to create downloadable file
+
+  output$download <- downloadHandler(
+    filename = function() {
+      paste0('filtered_data.tsv')
+    },
+    content = function(file) {
+      vroom::vroom_write(reactive_data(), file)
+      #write.csv(reactive_data(), file)
+    }
+  )
+  
+  
   
 }
 
