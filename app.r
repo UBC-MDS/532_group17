@@ -249,13 +249,22 @@ server <- function(input, output, session){
   # Create line plot 
   output$densityPlot <- renderPlot({
     reactive_data() |>
+      #convert the continues data type into descrete
+      mutate(YearOfInstallation = format(as.Date(paste0(YearOfInstallation, "-01-01")), "%Y"))|>
       ggplot(aes(x=YearOfInstallation)) +
       geom_bar(stat="count", fill = "coral1") +
       labs(
         x = "Year of Installation",
         y = "Number of Art Pieces"
       ) +
-      ggtitle("Number of Art Pieces Installed Over Time")
+      ggtitle("Number of Art Pieces Installed Over Time")+
+      #make sure the scale of x-axis is always readable
+      scale_x_discrete(breaks = c(min(reactive_data()$YearOfInstallation),
+                                  seq(min(reactive_data()$YearOfInstallation), 
+                                      max(reactive_data()$YearOfInstallation), by = 7),
+                                  max(reactive_data()$YearOfInstallation))
+      )
+       
   })   
   
   
