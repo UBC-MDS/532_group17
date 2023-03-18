@@ -39,7 +39,7 @@ ui <- fluidPage(
              windowTitle = "VanArt"
   ),
   
-  # image on brower tab 
+  # image on browser tab 
   tags$head(
     tags$link(rel = "icon", type = "image/png", sizes = "32x32", href = "/van_logo.png")),
   
