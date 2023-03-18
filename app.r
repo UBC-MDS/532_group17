@@ -30,7 +30,9 @@ ui <- fluidPage(
                             "|",
                             em("Discover Public Art in Vancouver!"), 
                             style = "font-size:23px;")),
-  
+  # adding download button
+  downloadButton("download", "Download Selected Data", 
+                 class = "btn-primary", style = "position: absolute; top: 10px; right: 10px;"),
   # navbarPage
   navbarPage("",
     id = 'navbar',
@@ -93,7 +95,8 @@ ui <- fluidPage(
         
     # adding scrollable popup scroll in leaflet render
     tags$style(".popup-scroll {max-height: 300px; overflow-y: auto;}")),
-        
+    
+    
     # about page
     tabPanel("About",
       p(h3(strong("Welcome!")),
@@ -288,6 +291,20 @@ server <- function(input, output, session){
       scale_fill_viridis_d(option = "magma") +
       labs(title = "Number of Art Pieces by Type")
   })
+  
+  # function to create downloadable file
+
+  output$download <- downloadHandler(
+    filename = function() {
+      paste0('filtered_data.tsv')
+    },
+    content = function(file) {
+      vroom::vroom_write(reactive_data(), file)
+      #write.csv(reactive_data(), file)
+    }
+  )
+  
+  
   
 }
 
