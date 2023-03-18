@@ -22,7 +22,7 @@ data <- separate(data,
 ui <- fluidPage(
   
   # theme 
-  theme = shinytheme("lumen"),
+  theme = bslib::bs_theme(bootswatch = "cerulean"),
   
   # title
   titlePanel(title = span(img(src = "van_logo.png", height = 70), 
@@ -247,7 +247,7 @@ server <- function(input, output, session){
   output$densityPlot <- renderPlot({
     reactive_data() |>
       ggplot(aes(x=YearOfInstallation)) +
-      geom_bar(stat="count", fill = "coral1") +
+      geom_bar(stat="count", color = "#339acc", fill = "#339acc") +
       labs(
         x = "Year of Installation",
         y = "Number of Art Pieces"
@@ -265,7 +265,7 @@ server <- function(input, output, session){
     
     grouped_data |> 
       ggplot(aes(x = num_art, y = reorder(Neighbourhood, -num_art))) +
-      geom_bar(stat = "identity", fill = "coral1") + 
+      geom_bar(stat = "identity", color = "#339acc", fill = "#339acc") + 
       labs(
         x = "Number of Art Pieces",
         y = "Neighbourhood"
@@ -282,10 +282,9 @@ server <- function(input, output, session){
                  fill = Type, 
                  label = type_num)) +
       geom_treemap() +
-      geom_treemap_text(colour = "white",
+      geom_treemap_text(colour = "black",
                         place = "centre",
                         size = 15) +
-      scale_fill_viridis_d(option = "magma") +
       labs(title = "Number of Art Pieces by Type")
   })
   
