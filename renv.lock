@@ -1614,6 +1614,20 @@
         "withr"
       ],
       "Hash": "da29b51211b28a7180977d94b638127e"
+    },
+    "shinycssloaders": {
+      "Package": "shinycssloaders",
+      "Version": "1.0.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "digest",
+        "glue",
+        "grDevices",
+        "shiny"
+      ],
+      "Hash": "45e01d73c4d5f1ade5b3a17f80863181"
     }
   }
 }
