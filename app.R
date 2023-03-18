@@ -10,6 +10,13 @@ if(!require(shinycssloaders)){
   library(shinycssloaders)
 }
 
+# add!!!
+library(RColorBrewer)
+nb.cols <- 15
+#mycolors <- colorRampPalette(brewer.pal(8, "BrBG"))(nb.cols)
+mycolors <- colorRampPalette(brewer.pal(8, "Blues"))(nb.cols)
+###
+
 # read data
 data <- read_csv2("data/public-art.csv")
 
@@ -27,8 +34,6 @@ ui <- fluidPage(
   
   # theme 
   theme = bslib::bs_theme(bootswatch = "cerulean"),
-  
-  tags$title('This is my page'),
   
   # title
   titlePanel(title = span(img(src = "van_logo.png", height = 70), 
@@ -318,8 +323,12 @@ server <- function(input, output, session){
       geom_treemap_text(colour = "black",
                         place = "centre",
                         size = 15) +
-      scale_fill_brewer(palette = "Blues") +
-      labs(title = "Number of Art Pieces by Type")
+      #scale_fill_brewer(palette = "Blues") +
+      #scale_fill_brewer(palette = "viridis") +
+      #scale_fill_brewer(palette = "Set3") +
+      #scale_fill_manual(values = colorRampPalette(brewer.pal(12, "Accent"))(colourCount)) +
+      scale_fill_manual(values = mycolors) +
+      labs(title = "Number of Art Pieces by Type") 
   })
   
   # function to create downloadable file
