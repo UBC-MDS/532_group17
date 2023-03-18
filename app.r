@@ -247,7 +247,7 @@ server <- function(input, output, session){
   output$densityPlot <- renderPlot({
     reactive_data() |>
       ggplot(aes(x=YearOfInstallation)) +
-      geom_bar(stat="count", color = "#339acc", fill = "#339acc") +
+      geom_bar(stat="count", color = "white", fill = "#339acc") +
       labs(
         x = "Year of Installation",
         y = "Number of Art Pieces"
@@ -285,6 +285,7 @@ server <- function(input, output, session){
       geom_treemap_text(colour = "black",
                         place = "centre",
                         size = 15) +
+      scale_fill_brewer(palette = "Blues") +
       labs(title = "Number of Art Pieces by Type")
   })
   
