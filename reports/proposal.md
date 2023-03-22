@@ -13,7 +13,7 @@ Our `VanArt` dashboard provides a comprehensive and interactive dashboard that a
 
 ## Description of the data
 
-The data set we used to create this app is modified from the [City of Vancouver Open Data Portal]().
+The data set we used to create this app is modified from the [City of Vancouver Open Data Portal](https://opendata.vancouver.ca/explore/dataset/public-art/export/).
 
 We'll be using a dataset that contains information on roughly 470 public artworks in Vancouver, with each artwork having 11 features/variables. These variables are described below:
 -	`Title of Work`: the title of the artwork 
